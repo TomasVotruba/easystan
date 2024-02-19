@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace TomasVotruba\EasyStan\Configuration;
 
 use Nette\Neon\Neon;
-use TomasVotruba\EasyStan\Finder\NeonFilesFinder;
+use TomasVotruba\EasyStan\EasyConfig\EasyConfigGenerator;
 use TomasVotruba\EasyStan\Neon\NeonFileSystem;
 
 final class EasyLevelExtensionUpdater
@@ -22,24 +22,14 @@ final class EasyLevelExtensionUpdater
 
     public function run(int $easyLevel): void
     {
-        // 1. build level configs if missing
-        $easyLevelNeonFiles = NeonFilesFinder::find([__DIR__ . '/../config/easy_levels']);
-
-        if (count($easyLevelNeonFiles) < 10) {
-            // we need to regenerate
-            $phpStanLevelConfigsLoader = new PHPStanLevelConfigsLoader();
-
-            foreach ($phpStanLevelConfigsLoader->loadByLevel() as $level => $phpstanLevelConfig) {
-                // @note dummy cope here, improve later by split mechanism
-                NeonFileSystem::print($phpstanLevelConfig, __DIR__ . '/../config/easy_levels/' . $level . '.neon');
-            }
-        }
+        $easyConfigGenerator = new EasyConfigGenerator();
+        $easyConfigGenerator->generate();
 
         // 2. fill the includes in extension.neon if needed
         $localExtensionNeon = Neon::decodeFile(self::EXTENSION_FILE_PATH);
 
-        if ($this->isExtensionFileUpdateNeeded($localExtensionNeon, $easyLevel)) {
-            // 2. we need to fill the includes first
+        if ($this->shouldAddIncludes($localExtensionNeon, $easyLevel)) {
+            // we need to fill the includes first
             $localExtensionNeon[self::INCLUDES_KEY] = [
                 // use path relative to extension.neon
                 'easy_levels/' . $easyLevel . '.neon',
@@ -55,11 +45,11 @@ final class EasyLevelExtensionUpdater
     /**
      * @param array<string, mixed> $extensionNeon
      */
-    private function isExtensionFileUpdateNeeded(array $extensionNeon, int $easyLevel): bool
+    private function shouldAddIncludes(array $extensionNeon, int $easyLevel): bool
     {
         $includes = $extensionNeon[self::INCLUDES_KEY] ?? null;
 
-        // no includes is provided
+        // no includes is provided → we have to fill it
         if ($includes === null) {
             return true;
         }
