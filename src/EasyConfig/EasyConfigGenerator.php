@@ -23,7 +23,6 @@ final class EasyConfigGenerator
 
         // we need to regenerate
         foreach ($this->phpStanLevelConfigsLoader->loadByLevel() as $phpstanLevelConfig) {
-
             $parameters = $phpstanLevelConfig['parameters'] ?? [];
             $conditionalTags = $phpstanLevelConfig['conditionalTags'] ?? [];
             // make sure it's allowed
