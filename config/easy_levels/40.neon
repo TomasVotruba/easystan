@@ -1,9 +1,6 @@
 includes:
     - '39.neon'
 
-parameters:
-    customRulesetUsed: false
-
 rules:
     - PHPStan\Rules\Functions\ClosureAttributesRule
 

@@ -1,12 +1,12 @@
 includes:
     - '119.neon'
 
+rules:
+    - PHPStan\Rules\Variables\NullCoalesceRule
+
 parameters:
     checkMaybeUndefinedVariables: true
     checkExtraArguments: true
     reportMagicMethods: true
     reportMagicProperties: true
-
-rules:
-    - PHPStan\Rules\Variables\NullCoalesceRule
 

@@ -1,11 +1,11 @@
 includes:
     - '140.neon'
 
+rules:
+    - PHPStan\Rules\Methods\CallPrivateMethodThroughStaticRule
+
 parameters:
     checkClassCaseSensitivity: true
     checkThisOnly: false
     checkPhpDocMissingReturn: true
-
-rules:
-    - PHPStan\Rules\Methods\CallPrivateMethodThroughStaticRule
 

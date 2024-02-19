@@ -1,9 +1,9 @@
 includes:
     - '208.neon'
 
-parameters:
-    checkAdvancedIsset: true
-
 rules:
     - PHPStan\Rules\Methods\CallToConstructorStatementWithoutSideEffectsRule
+
+parameters:
+    checkAdvancedIsset: true
 

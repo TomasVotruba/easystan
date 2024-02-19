@@ -10,6 +10,11 @@ use TomasVotruba\EasyStan\FileSystem\PathHelper;
 
 final class EasyConfigGenerator
 {
+    /**
+     * @var string
+     */
+    private const CUSTOM_RULESET_KEY = 'customRulesetUsed';
+
     private PHPStanLevelConfigsLoader $phpStanLevelConfigsLoader;
 
     public function __construct()
@@ -26,7 +31,7 @@ final class EasyConfigGenerator
             $parameters = $phpstanLevelConfig['parameters'] ?? [];
             $conditionalTags = $phpstanLevelConfig['conditionalTags'] ?? [];
             // make sure it's allowed
-            unset($parameters['usedCustomRuleset']);
+            unset($parameters[self::CUSTOM_RULESET_KEY]);
 
             $areConditionalTagsIncluded = false;
 
@@ -37,9 +42,12 @@ final class EasyConfigGenerator
             // 1 rule at a time
             foreach ($rules as $rule) {
                 $easyLevel = [
-                    'parameters' => $parameters,
                     'rules' => [$rule],
                 ];
+
+                if ($parameters !== []) {
+                    $easyLevel['parameters'] = $parameters;
+                }
 
                 // include just once
                 if ($areConditionalTagsIncluded === false) {
@@ -56,7 +64,6 @@ final class EasyConfigGenerator
 
             foreach ($services as $service) {
                 $easyLevels[] = [
-                    'parameters' => $parameters,
                     'services' => [$service],
                 ];
             }

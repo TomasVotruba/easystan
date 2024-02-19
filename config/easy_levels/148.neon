@@ -1,11 +1,11 @@
 includes:
     - '147.neon'
 
+rules:
+    - PHPStan\Rules\PhpDoc\FunctionAssertRule
+
 parameters:
     checkClassCaseSensitivity: true
     checkThisOnly: false
     checkPhpDocMissingReturn: true
-
-rules:
-    - PHPStan\Rules\PhpDoc\FunctionAssertRule
 

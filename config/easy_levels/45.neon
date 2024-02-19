@@ -1,9 +1,6 @@
 includes:
     - '44.neon'
 
-parameters:
-    customRulesetUsed: false
-
 rules:
     - PHPStan\Rules\Functions\ExistingClassesInTypehintsRule
 

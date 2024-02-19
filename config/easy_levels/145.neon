@@ -1,11 +1,11 @@
 includes:
     - '144.neon'
 
+rules:
+    - PHPStan\Rules\Operators\InvalidComparisonOperationRule
+
 parameters:
     checkClassCaseSensitivity: true
     checkThisOnly: false
     checkPhpDocMissingReturn: true
-
-rules:
-    - PHPStan\Rules\Operators\InvalidComparisonOperationRule
 

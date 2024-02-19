@@ -1,12 +1,12 @@
 includes:
     - '243.neon'
 
+rules:
+    - PHPStan\Rules\DateTimeInstantiationRule
+
 parameters:
     checkFunctionArgumentTypes: true
     checkArgumentsPassedByReference: true
-
-rules:
-    - PHPStan\Rules\DateTimeInstantiationRule
 
 conditionalTags:
     PHPStan\Rules\Functions\ArrayFilterRule:

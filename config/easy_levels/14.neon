@@ -1,9 +1,6 @@
 includes:
     - '13.neon'
 
-parameters:
-    customRulesetUsed: false
-
 rules:
     - PHPStan\Rules\Classes\ClassAttributesRule
 

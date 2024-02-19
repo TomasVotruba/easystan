@@ -1,11 +1,11 @@
 includes:
     - '123.neon'
 
+rules:
+    - PHPStan\Rules\Cast\PrintRule
+
 parameters:
     checkClassCaseSensitivity: true
     checkThisOnly: false
     checkPhpDocMissingReturn: true
-
-rules:
-    - PHPStan\Rules\Cast\PrintRule
 

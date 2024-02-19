@@ -1,11 +1,11 @@
 includes:
     - '202.neon'
 
-parameters:
-    checkAdvancedIsset: true
-
 rules:
     - PHPStan\Rules\Arrays\DeadForeachRule
+
+parameters:
+    checkAdvancedIsset: true
 
 conditionalTags:
     PHPStan\Rules\Comparison\ConstantLooseComparisonRule:

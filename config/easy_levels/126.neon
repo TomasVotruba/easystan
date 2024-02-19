@@ -1,11 +1,11 @@
 includes:
     - '125.neon'
 
+rules:
+    - PHPStan\Rules\Comparison\UsageOfVoidMatchExpressionRule
+
 parameters:
     checkClassCaseSensitivity: true
     checkThisOnly: false
     checkPhpDocMissingReturn: true
-
-rules:
-    - PHPStan\Rules\Comparison\UsageOfVoidMatchExpressionRule
 

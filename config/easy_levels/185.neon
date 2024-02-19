@@ -1,9 +1,9 @@
 includes:
     - '184.neon'
 
-parameters:
-    checkPhpDocMethodSignatures: true
-
 rules:
     - PHPStan\Rules\Generators\YieldTypeRule
+
+parameters:
+    checkPhpDocMethodSignatures: true
 

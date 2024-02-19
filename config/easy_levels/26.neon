@@ -1,9 +1,6 @@
 includes:
     - '25.neon'
 
-parameters:
-    customRulesetUsed: false
-
 rules:
     - PHPStan\Rules\Classes\LocalTypeAliasesRule
 

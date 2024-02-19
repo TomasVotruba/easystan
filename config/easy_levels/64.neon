@@ -1,9 +1,6 @@
 includes:
     - '63.neon'
 
-parameters:
-    customRulesetUsed: false
-
 rules:
     - PHPStan\Rules\Methods\MethodVisibilityInInterfaceRule
 

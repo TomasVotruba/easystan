@@ -1,9 +1,6 @@
 includes:
     - '43.neon'
 
-parameters:
-    customRulesetUsed: false
-
 rules:
     - PHPStan\Rules\Functions\ExistingClassesInClosureTypehintsRule
 

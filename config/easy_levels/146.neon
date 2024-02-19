@@ -1,11 +1,11 @@
 includes:
     - '145.neon'
 
+rules:
+    - PHPStan\Rules\PhpDoc\FunctionConditionalReturnTypeRule
+
 parameters:
     checkClassCaseSensitivity: true
     checkThisOnly: false
     checkPhpDocMissingReturn: true
-
-rules:
-    - PHPStan\Rules\PhpDoc\FunctionConditionalReturnTypeRule
 

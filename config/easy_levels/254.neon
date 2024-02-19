@@ -1,12 +1,12 @@
 includes:
     - '253.neon'
 
+rules:
+    - PHPStan\Rules\Properties\MissingPropertyTypehintRule
+
 parameters:
     checkGenericClassInNonGenericObjectType: true
     checkMissingIterableValueType: true
     checkMissingVarTagTypehint: true
     checkMissingTypehints: true
-
-rules:
-    - PHPStan\Rules\Properties\MissingPropertyTypehintRule
 

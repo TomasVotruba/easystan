@@ -1,9 +1,6 @@
 includes:
     - '51.neon'
 
-parameters:
-    customRulesetUsed: false
-
 rules:
     - PHPStan\Rules\Functions\ReturnNullsafeByRefRule
 

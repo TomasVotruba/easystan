@@ -1,11 +1,11 @@
 includes:
     - '149.neon'
 
+rules:
+    - PHPStan\Rules\PhpDoc\IncompatibleSelfOutTypeRule
+
 parameters:
     checkClassCaseSensitivity: true
     checkThisOnly: false
     checkPhpDocMissingReturn: true
-
-rules:
-    - PHPStan\Rules\PhpDoc\IncompatibleSelfOutTypeRule
 

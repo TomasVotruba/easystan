@@ -1,9 +1,6 @@
 includes:
     - '46.neon'
 
-parameters:
-    customRulesetUsed: false
-
 rules:
     - PHPStan\Rules\Functions\InnerFunctionRule
 

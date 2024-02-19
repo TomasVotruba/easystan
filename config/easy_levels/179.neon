@@ -1,9 +1,9 @@
 includes:
     - '178.neon'
 
-parameters:
-    checkPhpDocMethodSignatures: true
-
 rules:
     - PHPStan\Rules\Arrays\OffsetAccessValueAssignmentRule
+
+parameters:
+    checkPhpDocMethodSignatures: true
 

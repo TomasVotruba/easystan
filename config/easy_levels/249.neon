@@ -1,13 +1,13 @@
 includes:
     - '248.neon'
 
+rules:
+    - PHPStan\Rules\Constants\MissingClassConstantTypehintRule
+
 parameters:
     checkGenericClassInNonGenericObjectType: true
     checkMissingIterableValueType: true
     checkMissingVarTagTypehint: true
     checkMissingTypehints: true
-
-rules:
-    - PHPStan\Rules\Constants\MissingClassConstantTypehintRule
 
 conditionalTags: []

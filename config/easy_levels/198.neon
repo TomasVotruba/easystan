@@ -1,19 +1,6 @@
 includes:
     - '197.neon'
 
-parameters:
-    checkPhpDocMethodSignatures: true
-
-conditionalTags:
-    PHPStan\Rules\Arrays\ArrayUnpackingRule:
-        phpstan.rules.rule: %featureToggles.arrayUnpacking%
-
-    PHPStan\Rules\Properties\ReadOnlyByPhpDocPropertyAssignRefRule:
-        phpstan.rules.rule: %featureToggles.readOnlyByPhpDoc%
-
-    PHPStan\Rules\Properties\ReadOnlyByPhpDocPropertyAssignRule:
-        phpstan.rules.rule: %featureToggles.readOnlyByPhpDoc%
-
 services:
     -
         class: PHPStan\Rules\Generators\YieldFromTypeRule

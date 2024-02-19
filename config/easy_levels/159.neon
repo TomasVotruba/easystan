@@ -1,11 +1,11 @@
 includes:
     - '158.neon'
 
+rules:
+    - PHPStan\Rules\PhpDoc\RequireExtendsDefinitionClassRule
+
 parameters:
     checkClassCaseSensitivity: true
     checkThisOnly: false
     checkPhpDocMissingReturn: true
-
-rules:
-    - PHPStan\Rules\PhpDoc\RequireExtendsDefinitionClassRule
 

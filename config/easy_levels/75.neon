@@ -1,9 +1,6 @@
 includes:
     - '74.neon'
 
-parameters:
-    customRulesetUsed: false
-
 rules:
     - PHPStan\Rules\Properties\PropertyAttributesRule
 

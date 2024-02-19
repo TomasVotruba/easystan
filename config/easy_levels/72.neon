@@ -1,9 +1,6 @@
 includes:
     - '71.neon'
 
-parameters:
-    customRulesetUsed: false
-
 rules:
     - PHPStan\Rules\Properties\InvalidCallablePropertyTypeRule
 

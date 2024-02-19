@@ -1,9 +1,6 @@
 includes:
     - '50.neon'
 
-parameters:
-    customRulesetUsed: false
-
 rules:
     - PHPStan\Rules\Functions\RedefinedParametersRule
 

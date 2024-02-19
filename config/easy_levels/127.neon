@@ -1,11 +1,11 @@
 includes:
     - '126.neon'
 
+rules:
+    - PHPStan\Rules\Constants\ValueAssignedToClassConstantRule
+
 parameters:
     checkClassCaseSensitivity: true
     checkThisOnly: false
     checkPhpDocMissingReturn: true
-
-rules:
-    - PHPStan\Rules\Constants\ValueAssignedToClassConstantRule
 

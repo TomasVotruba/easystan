@@ -1,9 +1,9 @@
 includes:
     - '182.neon'
 
-parameters:
-    checkPhpDocMethodSignatures: true
-
 rules:
     - PHPStan\Rules\Functions\ClosureReturnTypeRule
+
+parameters:
+    checkPhpDocMethodSignatures: true
 

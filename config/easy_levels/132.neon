@@ -1,11 +1,11 @@
 includes:
     - '131.neon'
 
+rules:
+    - PHPStan\Rules\Generics\EnumTemplateTypeRule
+
 parameters:
     checkClassCaseSensitivity: true
     checkThisOnly: false
     checkPhpDocMissingReturn: true
-
-rules:
-    - PHPStan\Rules\Generics\EnumTemplateTypeRule
 

@@ -1,9 +1,6 @@
 includes:
     - '38.neon'
 
-parameters:
-    customRulesetUsed: false
-
 rules:
     - PHPStan\Rules\Functions\ArrowFunctionReturnNullsafeByRefRule
 

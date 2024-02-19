@@ -1,9 +1,6 @@
 includes:
     - '64.neon'
 
-parameters:
-    customRulesetUsed: false
-
 rules:
     - PHPStan\Rules\Methods\MissingMethodImplementationRule
 

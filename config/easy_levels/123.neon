@@ -1,11 +1,11 @@
 includes:
     - '122.neon'
 
+rules:
+    - PHPStan\Rules\Cast\InvalidPartOfEncapsedStringRule
+
 parameters:
     checkClassCaseSensitivity: true
     checkThisOnly: false
     checkPhpDocMissingReturn: true
-
-rules:
-    - PHPStan\Rules\Cast\InvalidPartOfEncapsedStringRule
 

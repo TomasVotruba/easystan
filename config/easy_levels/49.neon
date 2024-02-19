@@ -1,9 +1,6 @@
 includes:
     - '48.neon'
 
-parameters:
-    customRulesetUsed: false
-
 rules:
     - PHPStan\Rules\Functions\ParamAttributesRule
 

@@ -1,12 +1,12 @@
 includes:
     - '249.neon'
 
+rules:
+    - PHPStan\Rules\Functions\MissingFunctionParameterTypehintRule
+
 parameters:
     checkGenericClassInNonGenericObjectType: true
     checkMissingIterableValueType: true
     checkMissingVarTagTypehint: true
     checkMissingTypehints: true
-
-rules:
-    - PHPStan\Rules\Functions\MissingFunctionParameterTypehintRule
 

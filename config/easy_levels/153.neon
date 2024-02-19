@@ -1,11 +1,11 @@
 includes:
     - '152.neon'
 
+rules:
+    - PHPStan\Rules\PhpDoc\IncompatiblePropertyPhpDocTypeRule
+
 parameters:
     checkClassCaseSensitivity: true
     checkThisOnly: false
     checkPhpDocMissingReturn: true
-
-rules:
-    - PHPStan\Rules\PhpDoc\IncompatiblePropertyPhpDocTypeRule
 

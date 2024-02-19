@@ -1,9 +1,9 @@
 includes:
     - '214.neon'
 
-parameters:
-    checkAdvancedIsset: true
-
 rules:
     - PHPStan\Rules\TooWideTypehints\TooWideFunctionReturnTypehintRule
+
+parameters:
+    checkAdvancedIsset: true
 

@@ -1,9 +1,6 @@
 includes:
     - '1.neon'
 
-parameters:
-    customRulesetUsed: false
-
 rules:
     - PHPStan\Rules\Api\ApiClassImplementsRule
 

@@ -1,9 +1,6 @@
 includes:
     - '68.neon'
 
-parameters:
-    customRulesetUsed: false
-
 rules:
     - PHPStan\Rules\Operators\InvalidAssignVarRule
 

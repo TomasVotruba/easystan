@@ -1,11 +1,11 @@
 includes:
     - '134.neon'
 
+rules:
+    - PHPStan\Rules\Generics\InterfaceAncestorsRule
+
 parameters:
     checkClassCaseSensitivity: true
     checkThisOnly: false
     checkPhpDocMissingReturn: true
-
-rules:
-    - PHPStan\Rules\Generics\InterfaceAncestorsRule
 

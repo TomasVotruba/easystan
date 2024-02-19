@@ -1,9 +1,6 @@
 includes:
     - '59.neon'
 
-parameters:
-    customRulesetUsed: false
-
 rules:
     - PHPStan\Rules\Methods\ConstructorReturnTypeRule
 

@@ -1,9 +1,6 @@
 includes:
     - '65.neon'
 
-parameters:
-    customRulesetUsed: false
-
 rules:
     - PHPStan\Rules\Methods\MethodAttributesRule
 

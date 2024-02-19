@@ -1,9 +1,9 @@
 includes:
     - '190.neon'
 
-parameters:
-    checkPhpDocMethodSignatures: true
-
 rules:
     - PHPStan\Rules\Variables\ThrowTypeRule
+
+parameters:
+    checkPhpDocMethodSignatures: true
 

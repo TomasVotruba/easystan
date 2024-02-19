@@ -1,9 +1,9 @@
 includes:
     - '209.neon'
 
-parameters:
-    checkAdvancedIsset: true
-
 rules:
     - PHPStan\Rules\Methods\CallToMethodStatementWithoutSideEffectsRule
+
+parameters:
+    checkAdvancedIsset: true
 

@@ -1,9 +1,6 @@
 includes:
     - '47.neon'
 
-parameters:
-    customRulesetUsed: false
-
 rules:
     - PHPStan\Rules\Functions\InvalidLexicalVariablesInClosureUseRule
 

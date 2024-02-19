@@ -1,9 +1,6 @@
 includes:
     - '34.neon'
 
-parameters:
-    customRulesetUsed: false
-
 rules:
     - PHPStan\Rules\EnumCases\EnumCaseAttributesRule
 

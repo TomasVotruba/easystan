@@ -1,9 +1,9 @@
 includes:
     - '180.neon'
 
-parameters:
-    checkPhpDocMethodSignatures: true
-
 rules:
     - PHPStan\Rules\Exceptions\ThrowExprTypeRule
+
+parameters:
+    checkPhpDocMethodSignatures: true
 

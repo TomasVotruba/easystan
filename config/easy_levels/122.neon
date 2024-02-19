@@ -1,11 +1,11 @@
 includes:
     - '121.neon'
 
+rules:
+    - PHPStan\Rules\Cast\InvalidCastRule
+
 parameters:
     checkClassCaseSensitivity: true
     checkThisOnly: false
     checkPhpDocMissingReturn: true
-
-rules:
-    - PHPStan\Rules\Cast\InvalidCastRule
 

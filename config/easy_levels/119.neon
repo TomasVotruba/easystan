@@ -1,12 +1,12 @@
 includes:
     - '118.neon'
 
+rules:
+    - PHPStan\Rules\Variables\IssetRule
+
 parameters:
     checkMaybeUndefinedVariables: true
     checkExtraArguments: true
     reportMagicMethods: true
     reportMagicProperties: true
-
-rules:
-    - PHPStan\Rules\Variables\IssetRule
 

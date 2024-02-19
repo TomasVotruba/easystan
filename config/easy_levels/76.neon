@@ -1,9 +1,6 @@
 includes:
     - '75.neon'
 
-parameters:
-    customRulesetUsed: false
-
 rules:
     - PHPStan\Rules\Properties\ReadOnlyPropertyRule
 

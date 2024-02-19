@@ -1,9 +1,9 @@
 includes:
     - '204.neon'
 
-parameters:
-    checkAdvancedIsset: true
-
 rules:
     - PHPStan\Rules\DeadCode\UnusedPrivateConstantRule
+
+parameters:
+    checkAdvancedIsset: true
 

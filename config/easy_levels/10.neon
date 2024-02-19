@@ -1,9 +1,6 @@
 includes:
     - '9.neon'
 
-parameters:
-    customRulesetUsed: false
-
 rules:
     - PHPStan\Rules\Arrays\EmptyArrayItemRule
 

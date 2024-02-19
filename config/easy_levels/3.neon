@@ -1,9 +1,6 @@
 includes:
     - '2.neon'
 
-parameters:
-    customRulesetUsed: false
-
 rules:
     - PHPStan\Rules\Api\ApiInterfaceExtendsRule
 

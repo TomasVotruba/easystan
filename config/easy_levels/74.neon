@@ -1,9 +1,6 @@
 includes:
     - '73.neon'
 
-parameters:
-    customRulesetUsed: false
-
 rules:
     - PHPStan\Rules\Properties\PropertiesInInterfaceRule
 

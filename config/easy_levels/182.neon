@@ -1,9 +1,9 @@
 includes:
     - '181.neon'
 
-parameters:
-    checkPhpDocMethodSignatures: true
-
 rules:
     - PHPStan\Rules\Functions\ArrowFunctionReturnTypeRule
+
+parameters:
+    checkPhpDocMethodSignatures: true
 

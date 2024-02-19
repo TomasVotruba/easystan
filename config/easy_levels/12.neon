@@ -1,9 +1,6 @@
 includes:
     - '11.neon'
 
-parameters:
-    customRulesetUsed: false
-
 rules:
     - PHPStan\Rules\Cast\UnsetCastRule
 

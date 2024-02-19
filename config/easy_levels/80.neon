@@ -1,9 +1,6 @@
 includes:
     - '79.neon'
 
-parameters:
-    customRulesetUsed: false
-
 rules:
     - PHPStan\Rules\Variables\UnsetRule
 

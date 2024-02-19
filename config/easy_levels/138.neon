@@ -1,11 +1,11 @@
 includes:
     - '137.neon'
 
+rules:
+    - PHPStan\Rules\Generics\MethodSignatureVarianceRule
+
 parameters:
     checkClassCaseSensitivity: true
     checkThisOnly: false
     checkPhpDocMissingReturn: true
-
-rules:
-    - PHPStan\Rules\Generics\MethodSignatureVarianceRule
 

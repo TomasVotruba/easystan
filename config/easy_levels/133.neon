@@ -1,11 +1,11 @@
 includes:
     - '132.neon'
 
+rules:
+    - PHPStan\Rules\Generics\FunctionTemplateTypeRule
+
 parameters:
     checkClassCaseSensitivity: true
     checkThisOnly: false
     checkPhpDocMissingReturn: true
-
-rules:
-    - PHPStan\Rules\Generics\FunctionTemplateTypeRule
 

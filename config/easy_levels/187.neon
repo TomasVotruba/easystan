@@ -1,9 +1,9 @@
 includes:
     - '186.neon'
 
-parameters:
-    checkPhpDocMethodSignatures: true
-
 rules:
     - PHPStan\Rules\Properties\DefaultValueTypesAssignedToPropertiesRule
+
+parameters:
+    checkPhpDocMethodSignatures: true
 

@@ -1,11 +1,11 @@
 includes:
     - '174.neon'
 
-parameters:
-    checkPhpDocMethodSignatures: true
-
 rules:
     - PHPStan\Rules\Arrays\ArrayDestructuringRule
+
+parameters:
+    checkPhpDocMethodSignatures: true
 
 conditionalTags:
     PHPStan\Rules\Arrays\ArrayUnpackingRule:

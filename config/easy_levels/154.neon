@@ -1,11 +1,11 @@
 includes:
     - '153.neon'
 
+rules:
+    - PHPStan\Rules\PhpDoc\InvalidThrowsPhpDocValueRule
+
 parameters:
     checkClassCaseSensitivity: true
     checkThisOnly: false
     checkPhpDocMissingReturn: true
-
-rules:
-    - PHPStan\Rules\PhpDoc\InvalidThrowsPhpDocValueRule
 

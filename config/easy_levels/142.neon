@@ -1,11 +1,11 @@
 includes:
     - '141.neon'
 
+rules:
+    - PHPStan\Rules\Methods\IncompatibleDefaultParameterTypeRule
+
 parameters:
     checkClassCaseSensitivity: true
     checkThisOnly: false
     checkPhpDocMissingReturn: true
-
-rules:
-    - PHPStan\Rules\Methods\IncompatibleDefaultParameterTypeRule
 

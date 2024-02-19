@@ -1,9 +1,9 @@
 includes:
     - '175.neon'
 
-parameters:
-    checkPhpDocMethodSignatures: true
-
 rules:
     - PHPStan\Rules\Arrays\IterableInForeachRule
+
+parameters:
+    checkPhpDocMethodSignatures: true
 

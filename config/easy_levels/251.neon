@@ -1,12 +1,12 @@
 includes:
     - '250.neon'
 
+rules:
+    - PHPStan\Rules\Functions\MissingFunctionReturnTypehintRule
+
 parameters:
     checkGenericClassInNonGenericObjectType: true
     checkMissingIterableValueType: true
     checkMissingVarTagTypehint: true
     checkMissingTypehints: true
-
-rules:
-    - PHPStan\Rules\Functions\MissingFunctionReturnTypehintRule
 

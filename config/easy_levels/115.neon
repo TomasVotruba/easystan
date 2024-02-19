@@ -1,13 +1,13 @@
 includes:
     - '114.neon'
 
+rules:
+    - PHPStan\Rules\Classes\UnusedConstructorParametersRule
+
 parameters:
     checkMaybeUndefinedVariables: true
     checkExtraArguments: true
     reportMagicMethods: true
     reportMagicProperties: true
-
-rules:
-    - PHPStan\Rules\Classes\UnusedConstructorParametersRule
 
 conditionalTags: []

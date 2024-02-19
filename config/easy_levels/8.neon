@@ -1,9 +1,6 @@
 includes:
     - '7.neon'
 
-parameters:
-    customRulesetUsed: false
-
 rules:
     - PHPStan\Rules\Api\PhpStanNamespaceIn3rdPartyPackageRule
 

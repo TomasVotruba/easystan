@@ -1,9 +1,6 @@
 includes:
     - '31.neon'
 
-parameters:
-    customRulesetUsed: false
-
 rules:
     - PHPStan\Rules\Constants\DynamicClassConstantFetchRule
 

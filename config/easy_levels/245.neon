@@ -1,10 +1,10 @@
 includes:
     - '244.neon'
 
+rules:
+    - PHPStan\Rules\Functions\ImplodeFunctionRule
+
 parameters:
     checkFunctionArgumentTypes: true
     checkArgumentsPassedByReference: true
-
-rules:
-    - PHPStan\Rules\Functions\ImplodeFunctionRule
 

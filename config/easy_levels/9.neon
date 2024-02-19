@@ -1,9 +1,6 @@
 includes:
     - '8.neon'
 
-parameters:
-    customRulesetUsed: false
-
 rules:
     - PHPStan\Rules\Arrays\DuplicateKeysInLiteralArraysRule
 

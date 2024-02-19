@@ -1,9 +1,9 @@
 includes:
     - '188.neon'
 
-parameters:
-    checkPhpDocMethodSignatures: true
-
 rules:
     - PHPStan\Rules\Properties\ReadOnlyPropertyAssignRefRule
+
+parameters:
+    checkPhpDocMethodSignatures: true
 

@@ -1,30 +1,6 @@
 includes:
     - '169.neon'
 
-parameters:
-    checkClassCaseSensitivity: true
-    checkThisOnly: false
-    checkPhpDocMissingReturn: true
-
-conditionalTags:
-    PHPStan\Rules\Functions\IncompatibleArrowFunctionDefaultParameterTypeRule:
-        phpstan.rules.rule: %featureToggles.closureDefaultParameterTypeRule%
-
-    PHPStan\Rules\Functions\IncompatibleClosureDefaultParameterTypeRule:
-        phpstan.rules.rule: %featureToggles.closureDefaultParameterTypeRule%
-
-    PHPStan\Rules\Methods\IllegalConstructorMethodCallRule:
-        phpstan.rules.rule: %featureToggles.illegalConstructorMethodCall%
-
-    PHPStan\Rules\Methods\IllegalConstructorStaticCallRule:
-        phpstan.rules.rule: %featureToggles.illegalConstructorMethodCall%
-
-    PHPStan\Rules\PhpDoc\VarTagChangedExpressionTypeRule:
-        phpstan.rules.rule: %featureToggles.varTagType%
-
-    PHPStan\Rules\Generics\PropertyVarianceRule:
-        phpstan.rules.rule: %featureToggles.propertyVariance%
-
 services:
     -
         class: PHPStan\Rules\PhpDoc\InvalidPhpDocVarTagTypeRule

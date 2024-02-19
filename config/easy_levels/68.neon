@@ -1,9 +1,6 @@
 includes:
     - '67.neon'
 
-parameters:
-    customRulesetUsed: false
-
 rules:
     - PHPStan\Rules\Names\UsedNamesRule
 

@@ -1,9 +1,6 @@
 includes:
     - '16.neon'
 
-parameters:
-    customRulesetUsed: false
-
 rules:
     - PHPStan\Rules\Classes\DuplicateDeclarationRule
 

@@ -1,9 +1,9 @@
 includes:
     - '191.neon'
 
-parameters:
-    checkPhpDocMethodSignatures: true
-
 rules:
     - PHPStan\Rules\Variables\VariableCloningRule
+
+parameters:
+    checkPhpDocMethodSignatures: true
 

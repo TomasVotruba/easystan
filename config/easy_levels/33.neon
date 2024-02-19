@@ -1,9 +1,6 @@
 includes:
     - '32.neon'
 
-parameters:
-    customRulesetUsed: false
-
 rules:
     - PHPStan\Rules\Constants\FinalConstantRule
 

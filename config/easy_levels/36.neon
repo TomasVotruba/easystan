@@ -1,9 +1,6 @@
 includes:
     - '35.neon'
 
-parameters:
-    customRulesetUsed: false
-
 rules:
     - PHPStan\Rules\Exceptions\NoncapturingCatchRule
 

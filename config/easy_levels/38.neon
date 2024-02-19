@@ -1,9 +1,6 @@
 includes:
     - '37.neon'
 
-parameters:
-    customRulesetUsed: false
-
 rules:
     - PHPStan\Rules\Functions\ArrowFunctionAttributesRule
 

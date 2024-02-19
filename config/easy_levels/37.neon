@@ -1,9 +1,6 @@
 includes:
     - '36.neon'
 
-parameters:
-    customRulesetUsed: false
-
 rules:
     - PHPStan\Rules\Exceptions\ThrowExpressionRule
 

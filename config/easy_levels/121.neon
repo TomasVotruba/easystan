@@ -1,13 +1,13 @@
 includes:
     - '120.neon'
 
+rules:
+    - PHPStan\Rules\Cast\EchoRule
+
 parameters:
     checkClassCaseSensitivity: true
     checkThisOnly: false
     checkPhpDocMissingReturn: true
-
-rules:
-    - PHPStan\Rules\Cast\EchoRule
 
 conditionalTags:
     PHPStan\Rules\Functions\IncompatibleArrowFunctionDefaultParameterTypeRule:

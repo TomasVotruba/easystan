@@ -1,9 +1,6 @@
 includes:
     - '61.neon'
 
-parameters:
-    customRulesetUsed: false
-
 rules:
     - PHPStan\Rules\Methods\FinalPrivateMethodRule
 

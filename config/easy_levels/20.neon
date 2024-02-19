@@ -1,9 +1,6 @@
 includes:
     - '19.neon'
 
-parameters:
-    customRulesetUsed: false
-
 rules:
     - PHPStan\Rules\Classes\ExistingClassesInEnumImplementsRule
 

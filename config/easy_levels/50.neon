@@ -1,9 +1,6 @@
 includes:
     - '49.neon'
 
-parameters:
-    customRulesetUsed: false
-
 rules:
     - PHPStan\Rules\Functions\PrintfParametersRule
 

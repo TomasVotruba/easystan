@@ -1,9 +1,9 @@
 includes:
     - '185.neon'
 
-parameters:
-    checkPhpDocMethodSignatures: true
-
 rules:
     - PHPStan\Rules\Methods\ReturnTypeRule
+
+parameters:
+    checkPhpDocMethodSignatures: true
 

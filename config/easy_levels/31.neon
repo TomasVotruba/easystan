@@ -1,9 +1,6 @@
 includes:
     - '30.neon'
 
-parameters:
-    customRulesetUsed: false
-
 rules:
     - PHPStan\Rules\Classes\TraitAttributeClassRule
 

@@ -1,12 +1,12 @@
 includes:
     - '116.neon'
 
+rules:
+    - PHPStan\Rules\Functions\UnusedClosureUsesRule
+
 parameters:
     checkMaybeUndefinedVariables: true
     checkExtraArguments: true
     reportMagicMethods: true
     reportMagicProperties: true
-
-rules:
-    - PHPStan\Rules\Functions\UnusedClosureUsesRule
 

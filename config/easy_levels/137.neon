@@ -1,11 +1,11 @@
 includes:
     - '136.neon'
 
+rules:
+    - PHPStan\Rules\Generics\MethodTemplateTypeRule
+
 parameters:
     checkClassCaseSensitivity: true
     checkThisOnly: false
     checkPhpDocMissingReturn: true
-
-rules:
-    - PHPStan\Rules\Generics\MethodTemplateTypeRule
 

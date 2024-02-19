@@ -1,11 +1,11 @@
 includes:
     - '130.neon'
 
+rules:
+    - PHPStan\Rules\Generics\EnumAncestorsRule
+
 parameters:
     checkClassCaseSensitivity: true
     checkThisOnly: false
     checkPhpDocMissingReturn: true
-
-rules:
-    - PHPStan\Rules\Generics\EnumAncestorsRule
 

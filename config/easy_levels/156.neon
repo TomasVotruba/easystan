@@ -1,11 +1,11 @@
 includes:
     - '155.neon'
 
+rules:
+    - PHPStan\Rules\Classes\RequireImplementsRule
+
 parameters:
     checkClassCaseSensitivity: true
     checkThisOnly: false
     checkPhpDocMissingReturn: true
-
-rules:
-    - PHPStan\Rules\Classes\RequireImplementsRule
 

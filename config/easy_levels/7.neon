@@ -1,9 +1,6 @@
 includes:
     - '6.neon'
 
-parameters:
-    customRulesetUsed: false
-
 rules:
     - PHPStan\Rules\Api\GetTemplateTypeRule
 

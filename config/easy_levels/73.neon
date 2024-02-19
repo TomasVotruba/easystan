@@ -1,9 +1,6 @@
 includes:
     - '72.neon'
 
-parameters:
-    customRulesetUsed: false
-
 rules:
     - PHPStan\Rules\Properties\MissingReadOnlyPropertyAssignRule
 

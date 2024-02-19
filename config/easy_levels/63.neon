@@ -1,9 +1,6 @@
 includes:
     - '62.neon'
 
-parameters:
-    customRulesetUsed: false
-
 rules:
     - PHPStan\Rules\Methods\MethodCallableRule
 

@@ -1,11 +1,11 @@
 includes:
     - '154.neon'
 
+rules:
+    - PHPStan\Rules\Properties\AccessPrivatePropertyThroughStaticRule
+
 parameters:
     checkClassCaseSensitivity: true
     checkThisOnly: false
     checkPhpDocMissingReturn: true
-
-rules:
-    - PHPStan\Rules\Properties\AccessPrivatePropertyThroughStaticRule
 

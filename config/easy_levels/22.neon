@@ -1,9 +1,6 @@
 includes:
     - '21.neon'
 
-parameters:
-    customRulesetUsed: false
-
 rules:
     - PHPStan\Rules\Classes\ExistingClassInTraitUseRule
 
