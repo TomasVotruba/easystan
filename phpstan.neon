@@ -2,6 +2,8 @@ includes:
     - config/extension.neon
 
 parameters:
+    easy_level: 6
+
     paths:
         - src
         - tests

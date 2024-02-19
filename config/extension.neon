@@ -14,5 +14,4 @@ services:
             - %easy_level%
 
 includes:
-    # to be filled on the fly
-
+    - easy_levels/6.neon

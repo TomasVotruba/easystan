@@ -1,0 +1,329 @@
+parameters:
+    customRulesetUsed: false
+
+conditionalTags:
+    PHPStan\Rules\Api\NodeConnectingVisitorAttributesRule:
+        phpstan.rules.rule: %featureToggles.nodeConnectingVisitorRule%
+
+    PHPStan\Rules\Properties\MissingReadOnlyByPhpDocPropertyAssignRule:
+        phpstan.rules.rule: %featureToggles.readOnlyByPhpDoc%
+
+    PHPStan\Rules\Properties\ReadOnlyByPhpDocPropertyRule:
+        phpstan.rules.rule: %featureToggles.readOnlyByPhpDoc%
+
+    PHPStan\Rules\Properties\UninitializedPropertyRule:
+        phpstan.rules.rule: %checkUninitializedProperties%
+
+    PHPStan\Rules\Methods\ConsistentConstructorRule:
+        phpstan.rules.rule: %featureToggles.consistentConstructor%
+
+    PHPStan\Rules\Api\ApiClassConstFetchRule:
+        phpstan.rules.rule: %featureToggles.runtimeReflectionRules%
+
+    PHPStan\Rules\Api\ApiInstanceofRule:
+        phpstan.rules.rule: %featureToggles.runtimeReflectionRules%
+
+    PHPStan\Rules\Api\RuntimeReflectionFunctionRule:
+        phpstan.rules.rule: %featureToggles.runtimeReflectionRules%
+
+    PHPStan\Rules\Api\RuntimeReflectionInstantiationRule:
+        phpstan.rules.rule: %featureToggles.runtimeReflectionRules%
+
+    PHPStan\Rules\Methods\MissingMagicSerializationMethodsRule:
+        phpstan.rules.rule: %featureToggles.missingMagicSerializationRule%
+
+    PHPStan\Rules\Constants\MagicConstantContextRule:
+        phpstan.rules.rule: %featureToggles.magicConstantOutOfContext%
+
+rules:
+    - PHPStan\Rules\Api\ApiInstantiationRule
+    - PHPStan\Rules\Api\ApiClassExtendsRule
+    - PHPStan\Rules\Api\ApiClassImplementsRule
+    - PHPStan\Rules\Api\ApiInterfaceExtendsRule
+    - PHPStan\Rules\Api\ApiMethodCallRule
+    - PHPStan\Rules\Api\ApiStaticCallRule
+    - PHPStan\Rules\Api\ApiTraitUseRule
+    - PHPStan\Rules\Api\GetTemplateTypeRule
+    - PHPStan\Rules\Api\PhpStanNamespaceIn3rdPartyPackageRule
+    - PHPStan\Rules\Arrays\DuplicateKeysInLiteralArraysRule
+    - PHPStan\Rules\Arrays\EmptyArrayItemRule
+    - PHPStan\Rules\Arrays\OffsetAccessWithoutDimForReadingRule
+    - PHPStan\Rules\Cast\UnsetCastRule
+    - PHPStan\Rules\Classes\AllowedSubTypesRule
+    - PHPStan\Rules\Classes\ClassAttributesRule
+    - PHPStan\Rules\Classes\ClassConstantAttributesRule
+    - PHPStan\Rules\Classes\ClassConstantRule
+    - PHPStan\Rules\Classes\DuplicateDeclarationRule
+    - PHPStan\Rules\Classes\EnumSanityRule
+    - PHPStan\Rules\Classes\ExistingClassesInClassImplementsRule
+    - PHPStan\Rules\Classes\ExistingClassesInEnumImplementsRule
+    - PHPStan\Rules\Classes\ExistingClassesInInterfaceExtendsRule
+    - PHPStan\Rules\Classes\ExistingClassInTraitUseRule
+    - PHPStan\Rules\Classes\InstantiationRule
+    - PHPStan\Rules\Classes\InstantiationCallableRule
+    - PHPStan\Rules\Classes\InvalidPromotedPropertiesRule
+    - PHPStan\Rules\Classes\LocalTypeAliasesRule
+    - PHPStan\Rules\Classes\LocalTypeTraitAliasesRule
+    - PHPStan\Rules\Classes\NewStaticRule
+    - PHPStan\Rules\Classes\NonClassAttributeClassRule
+    - PHPStan\Rules\Classes\ReadOnlyClassRule
+    - PHPStan\Rules\Classes\TraitAttributeClassRule
+    - PHPStan\Rules\Constants\DynamicClassConstantFetchRule
+    - PHPStan\Rules\Constants\FinalConstantRule
+    - PHPStan\Rules\Constants\NativeTypedClassConstantRule
+    - PHPStan\Rules\EnumCases\EnumCaseAttributesRule
+    - PHPStan\Rules\Exceptions\NoncapturingCatchRule
+    - PHPStan\Rules\Exceptions\ThrowExpressionRule
+    - PHPStan\Rules\Functions\ArrowFunctionAttributesRule
+    - PHPStan\Rules\Functions\ArrowFunctionReturnNullsafeByRefRule
+    - PHPStan\Rules\Functions\ClosureAttributesRule
+    - PHPStan\Rules\Functions\DefineParametersRule
+    - PHPStan\Rules\Functions\ExistingClassesInArrowFunctionTypehintsRule
+    - PHPStan\Rules\Functions\CallToFunctionParametersRule
+    - PHPStan\Rules\Functions\ExistingClassesInClosureTypehintsRule
+    - PHPStan\Rules\Functions\ExistingClassesInTypehintsRule
+    - PHPStan\Rules\Functions\FunctionAttributesRule
+    - PHPStan\Rules\Functions\InnerFunctionRule
+    - PHPStan\Rules\Functions\InvalidLexicalVariablesInClosureUseRule
+    - PHPStan\Rules\Functions\ParamAttributesRule
+    - PHPStan\Rules\Functions\PrintfParametersRule
+    - PHPStan\Rules\Functions\RedefinedParametersRule
+    - PHPStan\Rules\Functions\ReturnNullsafeByRefRule
+    - PHPStan\Rules\Functions\VariadicParametersDeclarationRule
+    - PHPStan\Rules\Keywords\ContinueBreakInLoopRule
+    - PHPStan\Rules\Keywords\DeclareStrictTypesRule
+    - PHPStan\Rules\Methods\AbstractMethodInNonAbstractClassRule
+    - PHPStan\Rules\Methods\AbstractPrivateMethodRule
+    - PHPStan\Rules\Methods\CallMethodsRule
+    - PHPStan\Rules\Methods\CallStaticMethodsRule
+    - PHPStan\Rules\Methods\ConstructorReturnTypeRule
+    - PHPStan\Rules\Methods\ExistingClassesInTypehintsRule
+    - PHPStan\Rules\Methods\FinalPrivateMethodRule
+    - PHPStan\Rules\Methods\MethodCallableRule
+    - PHPStan\Rules\Methods\MethodVisibilityInInterfaceRule
+    - PHPStan\Rules\Methods\MissingMethodImplementationRule
+    - PHPStan\Rules\Methods\MethodAttributesRule
+    - PHPStan\Rules\Methods\StaticMethodCallableRule
+    - PHPStan\Rules\Names\UsedNamesRule
+    - PHPStan\Rules\Operators\InvalidAssignVarRule
+    - PHPStan\Rules\Properties\AccessPropertiesInAssignRule
+    - PHPStan\Rules\Properties\AccessStaticPropertiesInAssignRule
+    - PHPStan\Rules\Properties\InvalidCallablePropertyTypeRule
+    - PHPStan\Rules\Properties\MissingReadOnlyPropertyAssignRule
+    - PHPStan\Rules\Properties\PropertiesInInterfaceRule
+    - PHPStan\Rules\Properties\PropertyAttributesRule
+    - PHPStan\Rules\Properties\ReadOnlyPropertyRule
+    - PHPStan\Rules\Traits\ConflictingTraitConstantsRule
+    - PHPStan\Rules\Traits\ConstantsInTraitsRule
+    - PHPStan\Rules\Types\InvalidTypesInUnionRule
+    - PHPStan\Rules\Variables\UnsetRule
+    - PHPStan\Rules\Whitespace\FileWhitespaceRule
+
+services:
+    -
+        class: PHPStan\Rules\Api\ApiClassConstFetchRule
+
+    -
+        class: PHPStan\Rules\Api\ApiInstanceofRule
+
+    -
+        class: PHPStan\Rules\Api\ApiInstanceofTypeRule
+        arguments:
+            enabled: %featureToggles.instanceofType%
+            deprecationRulesInstalled: %deprecationRulesInstalled%
+
+        tags:
+            - phpstan.rules.rule
+
+    -
+        class: PHPStan\Rules\Api\NodeConnectingVisitorAttributesRule
+
+    -
+        class: PHPStan\Rules\Api\RuntimeReflectionFunctionRule
+
+    -
+        class: PHPStan\Rules\Api\RuntimeReflectionInstantiationRule
+
+    -
+        class: PHPStan\Rules\Classes\ExistingClassInClassExtendsRule
+        tags:
+            - phpstan.rules.rule
+
+    -
+        class: PHPStan\Rules\Classes\ExistingClassInInstanceOfRule
+        tags:
+            - phpstan.rules.rule
+
+        arguments:
+            checkClassCaseSensitivity: %checkClassCaseSensitivity%
+
+    -
+        class: PHPStan\Rules\Exceptions\CaughtExceptionExistenceRule
+        tags:
+            - phpstan.rules.rule
+
+        arguments:
+            checkClassCaseSensitivity: %checkClassCaseSensitivity%
+
+    -
+        class: PHPStan\Rules\Functions\CallToNonExistentFunctionRule
+        tags:
+            - phpstan.rules.rule
+
+        arguments:
+            checkFunctionNameCase: %checkFunctionNameCase%
+
+    -
+        class: PHPStan\Rules\Constants\OverridingConstantRule
+        arguments:
+            checkPhpDocMethodSignatures: %checkPhpDocMethodSignatures%
+
+        tags:
+            - phpstan.rules.rule
+
+    -
+        class: PHPStan\Rules\Methods\OverridingMethodRule
+        arguments:
+            checkPhpDocMethodSignatures: %checkPhpDocMethodSignatures%
+            genericPrototypeMessage: %featureToggles.genericPrototypeMessage%
+            finalByPhpDoc: %featureToggles.finalByPhpDoc%
+            checkMissingOverrideMethodAttribute: %checkMissingOverrideMethodAttribute%
+
+        tags:
+            - phpstan.rules.rule
+
+    -
+        class: PHPStan\Rules\Methods\ConsistentConstructorRule
+
+    -
+        class: PHPStan\Rules\Missing\MissingReturnRule
+        arguments:
+            checkExplicitMixedMissingReturn: %checkExplicitMixedMissingReturn%
+            checkPhpDocMissingReturn: %checkPhpDocMissingReturn%
+
+        tags:
+            - phpstan.rules.rule
+
+    -
+        class: PHPStan\Rules\Namespaces\ExistingNamesInGroupUseRule
+        tags:
+            - phpstan.rules.rule
+
+        arguments:
+            checkFunctionNameCase: %checkFunctionNameCase%
+
+    -
+        class: PHPStan\Rules\Namespaces\ExistingNamesInUseRule
+        tags:
+            - phpstan.rules.rule
+
+        arguments:
+            checkFunctionNameCase: %checkFunctionNameCase%
+
+    -
+        class: PHPStan\Rules\Operators\InvalidIncDecOperationRule
+        tags:
+            - phpstan.rules.rule
+
+        arguments:
+            checkThisOnly: %checkThisOnly%
+
+    -
+        class: PHPStan\Rules\Properties\AccessPropertiesRule
+        tags:
+            - phpstan.rules.rule
+
+        arguments:
+            reportMagicProperties: %reportMagicProperties%
+            checkDynamicProperties: %checkDynamicProperties%
+
+    -
+        class: PHPStan\Rules\Properties\AccessStaticPropertiesRule
+        tags:
+            - phpstan.rules.rule
+
+    -
+        class: PHPStan\Rules\Properties\ExistingClassesInPropertiesRule
+        tags:
+            - phpstan.rules.rule
+
+        arguments:
+            checkClassCaseSensitivity: %checkClassCaseSensitivity%
+            checkThisOnly: %checkThisOnly%
+
+    -
+        class: PHPStan\Rules\Functions\FunctionCallableRule
+        arguments:
+            checkFunctionNameCase: %checkFunctionNameCase%
+            reportMaybes: %reportMaybes%
+
+        tags:
+            - phpstan.rules.rule
+
+    -
+        class: PHPStan\Rules\Properties\MissingReadOnlyByPhpDocPropertyAssignRule
+
+    -
+        class: PHPStan\Rules\Properties\OverridingPropertyRule
+        arguments:
+            checkPhpDocMethodSignatures: %checkPhpDocMethodSignatures%
+            reportMaybes: %reportMaybesInPropertyPhpDocTypes%
+
+        tags:
+            - phpstan.rules.rule
+
+    -
+        class: PHPStan\Rules\Properties\ReadOnlyByPhpDocPropertyRule
+
+    -
+        class: PHPStan\Rules\Properties\UninitializedPropertyRule
+
+    -
+        class: PHPStan\Rules\Properties\WritingToReadOnlyPropertiesRule
+        arguments:
+            checkThisOnly: %checkThisOnly%
+
+        tags:
+            - phpstan.rules.rule
+
+    -
+        class: PHPStan\Rules\Properties\ReadingWriteOnlyPropertiesRule
+        arguments:
+            checkThisOnly: %checkThisOnly%
+
+        tags:
+            - phpstan.rules.rule
+
+    -
+        class: PHPStan\Rules\Variables\CompactVariablesRule
+        arguments:
+            checkMaybeUndefinedVariables: %checkMaybeUndefinedVariables%
+
+        tags:
+            - phpstan.rules.rule
+
+    -
+        class: PHPStan\Rules\Variables\DefinedVariableRule
+        arguments:
+            cliArgumentsVariablesRegistered: %cliArgumentsVariablesRegistered%
+            checkMaybeUndefinedVariables: %checkMaybeUndefinedVariables%
+
+        tags:
+            - phpstan.rules.rule
+
+    -
+        class: PHPStan\Rules\Regexp\RegularExpressionPatternRule
+        tags:
+            - phpstan.rules.rule
+
+    -
+        class: PHPStan\Reflection\ConstructorsHelper
+        arguments:
+            additionalConstructors: %additionalConstructors%
+
+    -
+        class: PHPStan\Rules\Methods\MissingMagicSerializationMethodsRule
+
+    -
+        class: PHPStan\Rules\Constants\MagicConstantContextRule
+

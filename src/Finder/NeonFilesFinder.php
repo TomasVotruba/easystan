@@ -22,7 +22,8 @@ final class NeonFilesFinder
         $finder = Finder::create()
             ->files()
             ->in($paths)
-            ->name('*.neon');
+            ->name('*.neon')
+            ->sortByName();
 
         return iterator_to_array($finder);
     }

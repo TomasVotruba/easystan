@@ -1,0 +1,6 @@
+includes:
+    - config.level8.neon
+
+parameters:
+    checkExplicitMixed: true
+

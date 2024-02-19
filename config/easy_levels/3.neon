@@ -1,0 +1,104 @@
+includes:
+    - config.level2.neon
+
+conditionalTags:
+    PHPStan\Rules\Arrays\ArrayUnpackingRule:
+        phpstan.rules.rule: %featureToggles.arrayUnpacking%
+
+    PHPStan\Rules\Properties\ReadOnlyByPhpDocPropertyAssignRefRule:
+        phpstan.rules.rule: %featureToggles.readOnlyByPhpDoc%
+
+    PHPStan\Rules\Properties\ReadOnlyByPhpDocPropertyAssignRule:
+        phpstan.rules.rule: %featureToggles.readOnlyByPhpDoc%
+
+rules:
+    - PHPStan\Rules\Arrays\ArrayDestructuringRule
+    - PHPStan\Rules\Arrays\IterableInForeachRule
+    - PHPStan\Rules\Arrays\OffsetAccessAssignmentRule
+    - PHPStan\Rules\Arrays\OffsetAccessAssignOpRule
+    - PHPStan\Rules\Arrays\OffsetAccessValueAssignmentRule
+    - PHPStan\Rules\Arrays\UnpackIterableInArrayRule
+    - PHPStan\Rules\Exceptions\ThrowExprTypeRule
+    - PHPStan\Rules\Functions\ArrowFunctionReturnTypeRule
+    - PHPStan\Rules\Functions\ClosureReturnTypeRule
+    - PHPStan\Rules\Functions\ReturnTypeRule
+    - PHPStan\Rules\Generators\YieldTypeRule
+    - PHPStan\Rules\Methods\ReturnTypeRule
+    - PHPStan\Rules\Properties\DefaultValueTypesAssignedToPropertiesRule
+    - PHPStan\Rules\Properties\ReadOnlyPropertyAssignRule
+    - PHPStan\Rules\Properties\ReadOnlyPropertyAssignRefRule
+    - PHPStan\Rules\Properties\TypesAssignedToPropertiesRule
+    - PHPStan\Rules\Variables\ThrowTypeRule
+    - PHPStan\Rules\Variables\VariableCloningRule
+
+parameters:
+    checkPhpDocMethodSignatures: true
+
+services:
+    -
+        class: PHPStan\Rules\Arrays\InvalidKeyInArrayDimFetchRule
+        arguments:
+            reportMaybes: %reportMaybes%
+
+        tags:
+            - phpstan.rules.rule
+
+    -
+        class: PHPStan\Rules\Arrays\InvalidKeyInArrayItemRule
+        arguments:
+            reportMaybes: %reportMaybes%
+
+        tags:
+            - phpstan.rules.rule
+
+    -
+        class: PHPStan\Rules\Arrays\NonexistentOffsetInArrayDimFetchRule
+        arguments:
+            reportMaybes: %reportMaybes%
+
+        tags:
+            - phpstan.rules.rule
+
+    -
+        class: PHPStan\Rules\Exceptions\ThrowsVoidFunctionWithExplicitThrowPointRule
+        arguments:
+            exceptionTypeResolver: @exceptionTypeResolver
+            missingCheckedExceptionInThrows: %exceptions.check.missingCheckedExceptionInThrows%
+
+        tags:
+            - phpstan.rules.rule
+
+    -
+        class: PHPStan\Rules\Exceptions\ThrowsVoidMethodWithExplicitThrowPointRule
+        arguments:
+            exceptionTypeResolver: @exceptionTypeResolver
+            missingCheckedExceptionInThrows: %exceptions.check.missingCheckedExceptionInThrows%
+
+        tags:
+            - phpstan.rules.rule
+
+    -
+        class: PHPStan\Rules\Generators\YieldFromTypeRule
+        arguments:
+            reportMaybes: %reportMaybes%
+
+        tags:
+            - phpstan.rules.rule
+
+    -
+        class: PHPStan\Rules\Generators\YieldInGeneratorRule
+        arguments:
+            reportMaybes: %reportMaybes%
+
+        tags:
+            - phpstan.rules.rule
+
+    -
+        class: PHPStan\Rules\Arrays\ArrayUnpackingRule
+
+    -
+        class: PHPStan\Rules\Properties\ReadOnlyByPhpDocPropertyAssignRefRule
+
+    -
+        class: PHPStan\Rules\Properties\ReadOnlyByPhpDocPropertyAssignRule
+

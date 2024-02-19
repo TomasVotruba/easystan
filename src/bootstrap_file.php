@@ -1,34 +1,97 @@
 <?php
 
-// 1. get "easy_parameter" from phpsta.neon here :)
+declare(strict_types=1);
 
-$localExtensionNeon = Nette\Neon\Neon::decodeFile(__DIR__ . '/../config/extension.neon');
-if ($localExtensionNeon['includes'] === null) {
-    // we need to fill the includes first
+use Nette\Neon\Neon;
+use Nette\Utils\FileSystem;
+use PHPStan\DependencyInjection\Container;
+use TomasVotruba\EasyStan\Configuration;
+use TomasVotruba\EasyStan\Finder\NeonFilesFinder;
 
-    // 1. generate easy levels
+final class EasyLevelExtensionUpdater
+{
+    /**
+     * @var string
+     */
+    private const EXTENSION_FILE_PATH = __DIR__ . '/../config/extension.neon';
 
-    /** @var \PHPStan\DependencyInjection\Container $container */
-    $configuration = $container->getByType(\TomasVotruba\EasyStan\Configuration::class);
+    /**
+     * @var string
+     */
+    private const INCLUDES_KEY = 'includes';
 
-    /** @var \TomasVotruba\EasyStan\Configuration $configuration */
-    $easyLevel = $configuration->getEasyLevel();
+    public function run(int $easyLevel): void
+    {
+        // 1. build level configs if missing
+        $easyLevelNeonFiles = NeonFilesFinder::find([__DIR__ . '/../config/easy_levels']);
 
-    // 1. fill includes
-    $localExtensionNeon['includes'] = [
-        __DIR__ . '/../config/easy-level/' . $easyLevel . '.neon',
-    ];
 
-    $updatedExtensionFileContents = \Nette\Neon\Neon::encode($localExtensionNeon, true, '    ');
-    \Nette\Utils\FileSystem::write(__DIR__ . '/../config/extension.neon', $updatedExtensionFileContents);
+        if (count($easyLevelNeonFiles) < 10) {
+            // we need to regenerate
+            $phpStanLevelConfigsLoader = new Configuration\PHPStanLevelConfigsLoader();
 
-    echo 'We have pre-build your easy level setup to configs. Re-run PHPStan to load it and run analysis' . PHP_EOL;
+            foreach ($phpStanLevelConfigsLoader->loadByLevel() as $level => $phpstanLevelConfig) {
+                // @note dummy cope here, improve later by split mechanism
+                $this->printNeon($phpstanLevelConfig, __DIR__ . '/../config/easy_levels/' . $level . '.neon');
+            }
+        }
+
+        // 2. fill the includes in extension.neon if needed
+
+        $localExtensionNeon = Nette\Neon\Neon::decodeFile(self::EXTENSION_FILE_PATH);
+        if ($this->isExtensionFileUpdateNeeded($localExtensionNeon, $easyLevel)) {
+            // 2. we need to fill the includes first
+            $localExtensionNeon[self::INCLUDES_KEY] = [
+                // use path relative to extension.neon
+                'easy_levels/' . $easyLevel . '.neon',
+            ];
+
+            $this->printNeon($localExtensionNeon, self::EXTENSION_FILE_PATH);
+
+            echo 'We have pre-build your easy level setup to configs. Re-run PHPStan to load it and run analysis' . PHP_EOL;
+            die;
+        }
+    }
+
+    /**
+     * @param array<string, mixed> $extensionNeon
+     */
+    private function isExtensionFileUpdateNeeded(array $extensionNeon, int $easyLevel): bool
+    {
+        $includes = $extensionNeon[self::INCLUDES_KEY] ?? null;
+
+        // no includes is provided
+        if ($includes === null) {
+            return true;
+        }
+
+        foreach ($includes as $include) {
+            // the included file is current level → no need to update
+            if ($include === 'easy_levels/' . $easyLevel . '.neon') {
+                return false;
+            }
+        }
+
+
+        return true;
+    }
+
+    /**
+     * @param array<string, mixed> $neon
+     */
+    private function printNeon(array $neon, string $targetFilePath): void
+    {
+        $neonFileContents = Neon::encode($neon, true, '    ');
+        FileSystem::write($targetFilePath, $neonFileContents);
+    }
 }
 
-// dump($localExtensionNeon);
-die;
+// the $container variable is available via https://github.com/phpstan/phpstan-src/blob/f01dbb66ff2bf67fe9c3e125af8d4a6ed2bedad8/src/Command/CommandHelper.php#L536-L538
+/** @var Container $container */
+$configuration = $container->getByType(Configuration::class);
 
-// dump($container::class);
+$easyLevelExtensionUpdater = new EasyLevelExtensionUpdater();
+/** @var Configuration $configuration */
+$easyLevelExtensionUpdater->run($configuration->getEasyLevel());
 
-// 2. load configs on the fly... somehow
-
+// 2. run PHPStan again

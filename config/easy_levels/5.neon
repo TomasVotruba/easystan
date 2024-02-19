@@ -1,0 +1,35 @@
+includes:
+    - config.level4.neon
+
+parameters:
+    checkFunctionArgumentTypes: true
+    checkArgumentsPassedByReference: true
+
+conditionalTags:
+    PHPStan\Rules\Functions\ArrayFilterRule:
+        phpstan.rules.rule: %featureToggles.arrayFilter%
+
+    PHPStan\Rules\Functions\CallUserFuncRule:
+        phpstan.rules.rule: %featureToggles.callUserFunc%
+
+rules:
+    - PHPStan\Rules\DateTimeInstantiationRule
+    - PHPStan\Rules\Functions\ImplodeFunctionRule
+
+services:
+    -
+        class: PHPStan\Rules\Functions\RandomIntParametersRule
+        arguments:
+            reportMaybes: %reportMaybes%
+
+        tags:
+            - phpstan.rules.rule
+
+    -
+        class: PHPStan\Rules\Functions\ArrayFilterRule
+        arguments:
+            treatPhpDocTypesAsCertain: %treatPhpDocTypesAsCertain%
+
+    -
+        class: PHPStan\Rules\Functions\CallUserFuncRule
+
