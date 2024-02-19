@@ -8,8 +8,9 @@ use Webmozart\Assert\Assert;
 
 final class Configuration
 {
-    public function __construct(private int $easyLevel)
-    {
+    public function __construct(
+        private int $easyLevel
+    ) {
         // @todo check based on config/easy_level/* file count
         Assert::range($this->easyLevel, 0, 300);
     }

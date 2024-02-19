@@ -9,9 +9,6 @@ use Nette\Utils\FileSystem;
 
 final class NeonFileSystem
 {
-    /**
-     * @param mixed[] $neonContents
-     */
     public static function print(array $neon, string $targetFilePath): void
     {
         $neonFileContents = Neon::encode($neon, true, '    ');

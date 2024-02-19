@@ -25,7 +25,6 @@ final class EasyLevelExtensionUpdater
         // 1. build level configs if missing
         $easyLevelNeonFiles = NeonFilesFinder::find([__DIR__ . '/../config/easy_levels']);
 
-
         if (count($easyLevelNeonFiles) < 10) {
             // we need to regenerate
             $phpStanLevelConfigsLoader = new PHPStanLevelConfigsLoader();
