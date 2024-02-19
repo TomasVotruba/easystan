@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace TomasVotruba\EasyStan\Configuration;
 
 use Nette\Neon\Neon;
-use TomasVotruba\EasyStan\EasyConfig\EasyConfigGenerator;
 use TomasVotruba\EasyStan\FileSystem\NeonFileSystem;
 
 final class EasyLevelExtensionUpdater
@@ -22,9 +21,6 @@ final class EasyLevelExtensionUpdater
 
     public function run(int $easyLevel): void
     {
-        $easyConfigGenerator = new EasyConfigGenerator();
-        $easyConfigGenerator->generate();
-
         // 2. fill the includes in extension.neon if needed
         $localExtensionNeon = Neon::decodeFile(self::EXTENSION_FILE_PATH);
 
