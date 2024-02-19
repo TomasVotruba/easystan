@@ -15,6 +15,7 @@
         "rector/rector": "^1.0",
         "symplify/easy-coding-standard": "^12.1",
         "tomasvotruba/class-leak": "^0.2",
+        "tomasvotruba/lines": "^0.5.1",
         "tomasvotruba/type-coverage": "^0.2.1",
         "tracy/tracy": "^2.10"
     },

@@ -2,12 +2,8 @@ includes:
     - config/extension.neon
 
 parameters:
-    easy_level: 6
+    easy_level: 4 # up to 270
 
     paths:
         - src
         - tests
-
-    excludePaths:
-        - */Fixture/*
-        - */Source/*
