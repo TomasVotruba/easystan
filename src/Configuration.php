@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace TomasVotruba\EasyPHPStan;
+namespace TomasVotruba\EasyStan;
 
 final class Configuration
 {
