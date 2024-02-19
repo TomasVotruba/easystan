@@ -1,0 +1,13 @@
+includes:
+    - easy_levels/253.neon
+
+parameters:
+    checkGenericClassInNonGenericObjectType: true
+    checkMissingIterableValueType: true
+    checkMissingVarTagTypehint: true
+    checkMissingTypehints: true
+
+conditionalTags: []
+rules:
+    - PHPStan\Rules\Properties\MissingPropertyTypehintRule
+

@@ -1,266 +1,43 @@
 includes:
-    - config.level3.neon
-
-rules:
-    - PHPStan\Rules\Arrays\DeadForeachRule
-    - PHPStan\Rules\DeadCode\UnreachableStatementRule
-    - PHPStan\Rules\DeadCode\UnusedPrivateConstantRule
-    - PHPStan\Rules\DeadCode\UnusedPrivateMethodRule
-    - PHPStan\Rules\Exceptions\OverwrittenExitPointByFinallyRule
-    - PHPStan\Rules\Functions\CallToFunctionStatementWithoutSideEffectsRule
-    - PHPStan\Rules\Methods\CallToConstructorStatementWithoutSideEffectsRule
-    - PHPStan\Rules\Methods\CallToMethodStatementWithoutSideEffectsRule
-    - PHPStan\Rules\Methods\CallToStaticMethodStatementWithoutSideEffectsRule
-    - PHPStan\Rules\Methods\NullsafeMethodCallRule
-    - PHPStan\Rules\TooWideTypehints\TooWideArrowFunctionReturnTypehintRule
-    - PHPStan\Rules\TooWideTypehints\TooWideClosureReturnTypehintRule
-    - PHPStan\Rules\TooWideTypehints\TooWideFunctionReturnTypehintRule
-
-conditionalTags:
-    PHPStan\Rules\Comparison\ConstantLooseComparisonRule:
-        phpstan.rules.rule: %featureToggles.looseComparison%
-
-    PHPStan\Rules\Traits\TraitDeclarationCollector:
-        phpstan.collector: %featureToggles.notAnalysedTrait%
-
-    PHPStan\Rules\Traits\TraitUseCollector:
-        phpstan.collector: %featureToggles.notAnalysedTrait%
-
-    PHPStan\Rules\Traits\NotAnalysedTraitRule:
-        phpstan.rules.rule: %featureToggles.notAnalysedTrait%
-
-    PHPStan\Rules\Comparison\LogicalXorConstantConditionRule:
-        phpstan.rules.rule: %featureToggles.logicalXor%
+    - easy_levels/3.neon
 
 parameters:
-    checkAdvancedIsset: true
+    customRulesetUsed: false
 
-services:
-    -
-        class: PHPStan\Rules\Classes\ImpossibleInstanceOfRule
-        arguments:
-            checkAlwaysTrueInstanceof: %checkAlwaysTrueInstanceof%
-            treatPhpDocTypesAsCertain: %treatPhpDocTypesAsCertain%
-            reportAlwaysTrueInLastCondition: %reportAlwaysTrueInLastCondition%
+conditionalTags:
+    PHPStan\Rules\Api\NodeConnectingVisitorAttributesRule:
+        phpstan.rules.rule: %featureToggles.nodeConnectingVisitorRule%
 
-        tags:
-            - phpstan.rules.rule
+    PHPStan\Rules\Properties\MissingReadOnlyByPhpDocPropertyAssignRule:
+        phpstan.rules.rule: %featureToggles.readOnlyByPhpDoc%
 
-    -
-        class: PHPStan\Rules\Comparison\BooleanAndConstantConditionRule
-        arguments:
-            treatPhpDocTypesAsCertain: %treatPhpDocTypesAsCertain%
-            bleedingEdge: %featureToggles.bleedingEdge%
-            reportAlwaysTrueInLastCondition: %reportAlwaysTrueInLastCondition%
+    PHPStan\Rules\Properties\ReadOnlyByPhpDocPropertyRule:
+        phpstan.rules.rule: %featureToggles.readOnlyByPhpDoc%
 
-        tags:
-            - phpstan.rules.rule
+    PHPStan\Rules\Properties\UninitializedPropertyRule:
+        phpstan.rules.rule: %checkUninitializedProperties%
 
-    -
-        class: PHPStan\Rules\Comparison\BooleanOrConstantConditionRule
-        arguments:
-            treatPhpDocTypesAsCertain: %treatPhpDocTypesAsCertain%
-            bleedingEdge: %featureToggles.bleedingEdge%
-            reportAlwaysTrueInLastCondition: %reportAlwaysTrueInLastCondition%
+    PHPStan\Rules\Methods\ConsistentConstructorRule:
+        phpstan.rules.rule: %featureToggles.consistentConstructor%
 
-        tags:
-            - phpstan.rules.rule
+    PHPStan\Rules\Api\ApiClassConstFetchRule:
+        phpstan.rules.rule: %featureToggles.runtimeReflectionRules%
 
-    -
-        class: PHPStan\Rules\Comparison\BooleanNotConstantConditionRule
-        arguments:
-            treatPhpDocTypesAsCertain: %treatPhpDocTypesAsCertain%
-            reportAlwaysTrueInLastCondition: %reportAlwaysTrueInLastCondition%
+    PHPStan\Rules\Api\ApiInstanceofRule:
+        phpstan.rules.rule: %featureToggles.runtimeReflectionRules%
 
-        tags:
-            - phpstan.rules.rule
+    PHPStan\Rules\Api\RuntimeReflectionFunctionRule:
+        phpstan.rules.rule: %featureToggles.runtimeReflectionRules%
 
-    -
-        class: PHPStan\Rules\DeadCode\NoopRule
-        arguments:
-            logicalXor: %featureToggles.logicalXor%
+    PHPStan\Rules\Api\RuntimeReflectionInstantiationRule:
+        phpstan.rules.rule: %featureToggles.runtimeReflectionRules%
 
-        tags:
-            - phpstan.rules.rule
+    PHPStan\Rules\Methods\MissingMagicSerializationMethodsRule:
+        phpstan.rules.rule: %featureToggles.missingMagicSerializationRule%
 
-    -
-        class: PHPStan\Rules\DeadCode\UnusedPrivatePropertyRule
-        arguments:
-            alwaysWrittenTags: %propertyAlwaysWrittenTags%
-            alwaysReadTags: %propertyAlwaysReadTags%
-            checkUninitializedProperties: %checkUninitializedProperties%
+    PHPStan\Rules\Constants\MagicConstantContextRule:
+        phpstan.rules.rule: %featureToggles.magicConstantOutOfContext%
 
-        tags:
-            - phpstan.rules.rule
-
-    -
-        class: PHPStan\Rules\Comparison\DoWhileLoopConstantConditionRule
-        arguments:
-            treatPhpDocTypesAsCertain: %treatPhpDocTypesAsCertain%
-
-        tags:
-            - phpstan.rules.rule
-
-    -
-        class: PHPStan\Rules\Comparison\ElseIfConstantConditionRule
-        arguments:
-            treatPhpDocTypesAsCertain: %treatPhpDocTypesAsCertain%
-            reportAlwaysTrueInLastCondition: %reportAlwaysTrueInLastCondition%
-
-        tags:
-            - phpstan.rules.rule
-
-    -
-        class: PHPStan\Rules\Comparison\IfConstantConditionRule
-        arguments:
-            treatPhpDocTypesAsCertain: %treatPhpDocTypesAsCertain%
-
-        tags:
-            - phpstan.rules.rule
-
-    -
-        class: PHPStan\Rules\Comparison\ImpossibleCheckTypeFunctionCallRule
-        arguments:
-            checkAlwaysTrueCheckTypeFunctionCall: %checkAlwaysTrueCheckTypeFunctionCall%
-            treatPhpDocTypesAsCertain: %treatPhpDocTypesAsCertain%
-            reportAlwaysTrueInLastCondition: %reportAlwaysTrueInLastCondition%
-
-        tags:
-            - phpstan.rules.rule
-
-    -
-        class: PHPStan\Rules\Comparison\ImpossibleCheckTypeMethodCallRule
-        arguments:
-            checkAlwaysTrueCheckTypeFunctionCall: %checkAlwaysTrueCheckTypeFunctionCall%
-            treatPhpDocTypesAsCertain: %treatPhpDocTypesAsCertain%
-            reportAlwaysTrueInLastCondition: %reportAlwaysTrueInLastCondition%
-
-        tags:
-            - phpstan.rules.rule
-
-    -
-        class: PHPStan\Rules\Comparison\ImpossibleCheckTypeStaticMethodCallRule
-        arguments:
-            checkAlwaysTrueCheckTypeFunctionCall: %checkAlwaysTrueCheckTypeFunctionCall%
-            treatPhpDocTypesAsCertain: %treatPhpDocTypesAsCertain%
-            reportAlwaysTrueInLastCondition: %reportAlwaysTrueInLastCondition%
-
-        tags:
-            - phpstan.rules.rule
-
-    -
-        class: PHPStan\Rules\Comparison\LogicalXorConstantConditionRule
-        arguments:
-            treatPhpDocTypesAsCertain: %treatPhpDocTypesAsCertain%
-            reportAlwaysTrueInLastCondition: %reportAlwaysTrueInLastCondition%
-
-    -
-        class: PHPStan\Rules\Comparison\MatchExpressionRule
-        arguments:
-            checkAlwaysTrueStrictComparison: %checkAlwaysTrueStrictComparison%
-            disableUnreachable: %featureToggles.disableUnreachableBranchesRules%
-            reportAlwaysTrueInLastCondition: %reportAlwaysTrueInLastCondition%
-            treatPhpDocTypesAsCertain: %treatPhpDocTypesAsCertain%
-
-        tags:
-            - phpstan.rules.rule
-
-    -
-        class: PHPStan\Rules\Comparison\NumberComparisonOperatorsConstantConditionRule
-        arguments:
-            treatPhpDocTypesAsCertain: %treatPhpDocTypesAsCertain%
-
-        tags:
-            - phpstan.rules.rule
-
-    -
-        class: PHPStan\Rules\Comparison\StrictComparisonOfDifferentTypesRule
-        arguments:
-            checkAlwaysTrueStrictComparison: %checkAlwaysTrueStrictComparison%
-            treatPhpDocTypesAsCertain: %treatPhpDocTypesAsCertain%
-            reportAlwaysTrueInLastCondition: %reportAlwaysTrueInLastCondition%
-
-        tags:
-            - phpstan.rules.rule
-
-    -
-        class: PHPStan\Rules\Comparison\ConstantLooseComparisonRule
-        arguments:
-            checkAlwaysTrueLooseComparison: %checkAlwaysTrueLooseComparison%
-            treatPhpDocTypesAsCertain: %treatPhpDocTypesAsCertain%
-            reportAlwaysTrueInLastCondition: %reportAlwaysTrueInLastCondition%
-
-    -
-        class: PHPStan\Rules\Comparison\TernaryOperatorConstantConditionRule
-        arguments:
-            treatPhpDocTypesAsCertain: %treatPhpDocTypesAsCertain%
-
-        tags:
-            - phpstan.rules.rule
-
-    -
-        class: PHPStan\Rules\Comparison\UnreachableIfBranchesRule
-        arguments:
-            treatPhpDocTypesAsCertain: %treatPhpDocTypesAsCertain%
-            disable: %featureToggles.disableUnreachableBranchesRules%
-
-        tags:
-            - phpstan.rules.rule
-
-    -
-        class: PHPStan\Rules\Comparison\UnreachableTernaryElseBranchRule
-        arguments:
-            treatPhpDocTypesAsCertain: %treatPhpDocTypesAsCertain%
-            disable: %featureToggles.disableUnreachableBranchesRules%
-
-        tags:
-            - phpstan.rules.rule
-
-    -
-        class: PHPStan\Rules\Comparison\WhileLoopAlwaysFalseConditionRule
-        arguments:
-            treatPhpDocTypesAsCertain: %treatPhpDocTypesAsCertain%
-
-        tags:
-            - phpstan.rules.rule
-
-    -
-        class: PHPStan\Rules\Comparison\WhileLoopAlwaysTrueConditionRule
-        arguments:
-            treatPhpDocTypesAsCertain: %treatPhpDocTypesAsCertain%
-
-        tags:
-            - phpstan.rules.rule
-
-    -
-        class: PHPStan\Rules\TooWideTypehints\TooWideMethodReturnTypehintRule
-        arguments:
-            checkProtectedAndPublicMethods: %checkTooWideReturnTypesInProtectedAndPublicMethods%
-            alwaysCheckFinal: %featureToggles.alwaysCheckTooWideReturnTypeFinalMethods%
-
-        tags:
-            - phpstan.rules.rule
-
-    -
-        class: PHPStan\Rules\Properties\NullsafePropertyFetchRule
-        tags:
-            - phpstan.rules.rule
-
-    -
-        class: PHPStan\Rules\Traits\TraitDeclarationCollector
-
-    -
-        class: PHPStan\Rules\Traits\TraitUseCollector
-
-    -
-        class: PHPStan\Rules\Traits\NotAnalysedTraitRule
-
-    -
-        class: PHPStan\Rules\Exceptions\CatchWithUnthrownExceptionRule
-        arguments:
-            exceptionTypeResolver: @exceptionTypeResolver
-            reportUncheckedExceptionDeadCatch: %exceptions.reportUncheckedExceptionDeadCatch%
-
-        tags:
-            - phpstan.rules.rule
+rules:
+    - PHPStan\Rules\Api\ApiMethodCallRule
 

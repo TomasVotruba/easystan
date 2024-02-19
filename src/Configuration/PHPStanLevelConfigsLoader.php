@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace TomasVotruba\EasyStan\Configuration;
 
 use Nette\Neon\Neon;
-use TomasVotruba\EasyStan\Finder\NeonFilesFinder;
+use TomasVotruba\EasyStan\FileSystem\NeonFilesFinder;
 
 /**
  * This service loads PHPStan level configs

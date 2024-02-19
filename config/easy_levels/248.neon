@@ -1,0 +1,18 @@
+includes:
+    - easy_levels/247.neon
+
+parameters:
+    checkFunctionArgumentTypes: true
+    checkArgumentsPassedByReference: true
+
+conditionalTags:
+    PHPStan\Rules\Functions\ArrayFilterRule:
+        phpstan.rules.rule: %featureToggles.arrayFilter%
+
+    PHPStan\Rules\Functions\CallUserFuncRule:
+        phpstan.rules.rule: %featureToggles.callUserFunc%
+
+services:
+    -
+        class: PHPStan\Rules\Functions\CallUserFuncRule
+

@@ -1,104 +1,43 @@
 includes:
-    - config.level2.neon
-
-conditionalTags:
-    PHPStan\Rules\Arrays\ArrayUnpackingRule:
-        phpstan.rules.rule: %featureToggles.arrayUnpacking%
-
-    PHPStan\Rules\Properties\ReadOnlyByPhpDocPropertyAssignRefRule:
-        phpstan.rules.rule: %featureToggles.readOnlyByPhpDoc%
-
-    PHPStan\Rules\Properties\ReadOnlyByPhpDocPropertyAssignRule:
-        phpstan.rules.rule: %featureToggles.readOnlyByPhpDoc%
-
-rules:
-    - PHPStan\Rules\Arrays\ArrayDestructuringRule
-    - PHPStan\Rules\Arrays\IterableInForeachRule
-    - PHPStan\Rules\Arrays\OffsetAccessAssignmentRule
-    - PHPStan\Rules\Arrays\OffsetAccessAssignOpRule
-    - PHPStan\Rules\Arrays\OffsetAccessValueAssignmentRule
-    - PHPStan\Rules\Arrays\UnpackIterableInArrayRule
-    - PHPStan\Rules\Exceptions\ThrowExprTypeRule
-    - PHPStan\Rules\Functions\ArrowFunctionReturnTypeRule
-    - PHPStan\Rules\Functions\ClosureReturnTypeRule
-    - PHPStan\Rules\Functions\ReturnTypeRule
-    - PHPStan\Rules\Generators\YieldTypeRule
-    - PHPStan\Rules\Methods\ReturnTypeRule
-    - PHPStan\Rules\Properties\DefaultValueTypesAssignedToPropertiesRule
-    - PHPStan\Rules\Properties\ReadOnlyPropertyAssignRule
-    - PHPStan\Rules\Properties\ReadOnlyPropertyAssignRefRule
-    - PHPStan\Rules\Properties\TypesAssignedToPropertiesRule
-    - PHPStan\Rules\Variables\ThrowTypeRule
-    - PHPStan\Rules\Variables\VariableCloningRule
+    - easy_levels/2.neon
 
 parameters:
-    checkPhpDocMethodSignatures: true
+    customRulesetUsed: false
 
-services:
-    -
-        class: PHPStan\Rules\Arrays\InvalidKeyInArrayDimFetchRule
-        arguments:
-            reportMaybes: %reportMaybes%
+conditionalTags:
+    PHPStan\Rules\Api\NodeConnectingVisitorAttributesRule:
+        phpstan.rules.rule: %featureToggles.nodeConnectingVisitorRule%
 
-        tags:
-            - phpstan.rules.rule
+    PHPStan\Rules\Properties\MissingReadOnlyByPhpDocPropertyAssignRule:
+        phpstan.rules.rule: %featureToggles.readOnlyByPhpDoc%
 
-    -
-        class: PHPStan\Rules\Arrays\InvalidKeyInArrayItemRule
-        arguments:
-            reportMaybes: %reportMaybes%
+    PHPStan\Rules\Properties\ReadOnlyByPhpDocPropertyRule:
+        phpstan.rules.rule: %featureToggles.readOnlyByPhpDoc%
 
-        tags:
-            - phpstan.rules.rule
+    PHPStan\Rules\Properties\UninitializedPropertyRule:
+        phpstan.rules.rule: %checkUninitializedProperties%
 
-    -
-        class: PHPStan\Rules\Arrays\NonexistentOffsetInArrayDimFetchRule
-        arguments:
-            reportMaybes: %reportMaybes%
+    PHPStan\Rules\Methods\ConsistentConstructorRule:
+        phpstan.rules.rule: %featureToggles.consistentConstructor%
 
-        tags:
-            - phpstan.rules.rule
+    PHPStan\Rules\Api\ApiClassConstFetchRule:
+        phpstan.rules.rule: %featureToggles.runtimeReflectionRules%
 
-    -
-        class: PHPStan\Rules\Exceptions\ThrowsVoidFunctionWithExplicitThrowPointRule
-        arguments:
-            exceptionTypeResolver: @exceptionTypeResolver
-            missingCheckedExceptionInThrows: %exceptions.check.missingCheckedExceptionInThrows%
+    PHPStan\Rules\Api\ApiInstanceofRule:
+        phpstan.rules.rule: %featureToggles.runtimeReflectionRules%
 
-        tags:
-            - phpstan.rules.rule
+    PHPStan\Rules\Api\RuntimeReflectionFunctionRule:
+        phpstan.rules.rule: %featureToggles.runtimeReflectionRules%
 
-    -
-        class: PHPStan\Rules\Exceptions\ThrowsVoidMethodWithExplicitThrowPointRule
-        arguments:
-            exceptionTypeResolver: @exceptionTypeResolver
-            missingCheckedExceptionInThrows: %exceptions.check.missingCheckedExceptionInThrows%
+    PHPStan\Rules\Api\RuntimeReflectionInstantiationRule:
+        phpstan.rules.rule: %featureToggles.runtimeReflectionRules%
 
-        tags:
-            - phpstan.rules.rule
+    PHPStan\Rules\Methods\MissingMagicSerializationMethodsRule:
+        phpstan.rules.rule: %featureToggles.missingMagicSerializationRule%
 
-    -
-        class: PHPStan\Rules\Generators\YieldFromTypeRule
-        arguments:
-            reportMaybes: %reportMaybes%
+    PHPStan\Rules\Constants\MagicConstantContextRule:
+        phpstan.rules.rule: %featureToggles.magicConstantOutOfContext%
 
-        tags:
-            - phpstan.rules.rule
-
-    -
-        class: PHPStan\Rules\Generators\YieldInGeneratorRule
-        arguments:
-            reportMaybes: %reportMaybes%
-
-        tags:
-            - phpstan.rules.rule
-
-    -
-        class: PHPStan\Rules\Arrays\ArrayUnpackingRule
-
-    -
-        class: PHPStan\Rules\Properties\ReadOnlyByPhpDocPropertyAssignRefRule
-
-    -
-        class: PHPStan\Rules\Properties\ReadOnlyByPhpDocPropertyAssignRule
+rules:
+    - PHPStan\Rules\Api\ApiInterfaceExtendsRule
 

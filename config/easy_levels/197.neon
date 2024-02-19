@@ -1,0 +1,26 @@
+includes:
+    - easy_levels/196.neon
+
+parameters:
+    checkPhpDocMethodSignatures: true
+
+conditionalTags:
+    PHPStan\Rules\Arrays\ArrayUnpackingRule:
+        phpstan.rules.rule: %featureToggles.arrayUnpacking%
+
+    PHPStan\Rules\Properties\ReadOnlyByPhpDocPropertyAssignRefRule:
+        phpstan.rules.rule: %featureToggles.readOnlyByPhpDoc%
+
+    PHPStan\Rules\Properties\ReadOnlyByPhpDocPropertyAssignRule:
+        phpstan.rules.rule: %featureToggles.readOnlyByPhpDoc%
+
+services:
+    -
+        class: PHPStan\Rules\Exceptions\ThrowsVoidMethodWithExplicitThrowPointRule
+        arguments:
+            exceptionTypeResolver: @exceptionTypeResolver
+            missingCheckedExceptionInThrows: %exceptions.check.missingCheckedExceptionInThrows%
+
+        tags:
+            - phpstan.rules.rule
+

@@ -6,7 +6,7 @@ namespace TomasVotruba\EasyStan\Configuration;
 
 use Nette\Neon\Neon;
 use TomasVotruba\EasyStan\EasyConfig\EasyConfigGenerator;
-use TomasVotruba\EasyStan\Neon\NeonFileSystem;
+use TomasVotruba\EasyStan\FileSystem\NeonFileSystem;
 
 final class EasyLevelExtensionUpdater
 {

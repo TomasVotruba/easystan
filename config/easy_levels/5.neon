@@ -1,35 +1,43 @@
 includes:
-    - config.level4.neon
+    - easy_levels/4.neon
 
 parameters:
-    checkFunctionArgumentTypes: true
-    checkArgumentsPassedByReference: true
+    customRulesetUsed: false
 
 conditionalTags:
-    PHPStan\Rules\Functions\ArrayFilterRule:
-        phpstan.rules.rule: %featureToggles.arrayFilter%
+    PHPStan\Rules\Api\NodeConnectingVisitorAttributesRule:
+        phpstan.rules.rule: %featureToggles.nodeConnectingVisitorRule%
 
-    PHPStan\Rules\Functions\CallUserFuncRule:
-        phpstan.rules.rule: %featureToggles.callUserFunc%
+    PHPStan\Rules\Properties\MissingReadOnlyByPhpDocPropertyAssignRule:
+        phpstan.rules.rule: %featureToggles.readOnlyByPhpDoc%
+
+    PHPStan\Rules\Properties\ReadOnlyByPhpDocPropertyRule:
+        phpstan.rules.rule: %featureToggles.readOnlyByPhpDoc%
+
+    PHPStan\Rules\Properties\UninitializedPropertyRule:
+        phpstan.rules.rule: %checkUninitializedProperties%
+
+    PHPStan\Rules\Methods\ConsistentConstructorRule:
+        phpstan.rules.rule: %featureToggles.consistentConstructor%
+
+    PHPStan\Rules\Api\ApiClassConstFetchRule:
+        phpstan.rules.rule: %featureToggles.runtimeReflectionRules%
+
+    PHPStan\Rules\Api\ApiInstanceofRule:
+        phpstan.rules.rule: %featureToggles.runtimeReflectionRules%
+
+    PHPStan\Rules\Api\RuntimeReflectionFunctionRule:
+        phpstan.rules.rule: %featureToggles.runtimeReflectionRules%
+
+    PHPStan\Rules\Api\RuntimeReflectionInstantiationRule:
+        phpstan.rules.rule: %featureToggles.runtimeReflectionRules%
+
+    PHPStan\Rules\Methods\MissingMagicSerializationMethodsRule:
+        phpstan.rules.rule: %featureToggles.missingMagicSerializationRule%
+
+    PHPStan\Rules\Constants\MagicConstantContextRule:
+        phpstan.rules.rule: %featureToggles.magicConstantOutOfContext%
 
 rules:
-    - PHPStan\Rules\DateTimeInstantiationRule
-    - PHPStan\Rules\Functions\ImplodeFunctionRule
-
-services:
-    -
-        class: PHPStan\Rules\Functions\RandomIntParametersRule
-        arguments:
-            reportMaybes: %reportMaybes%
-
-        tags:
-            - phpstan.rules.rule
-
-    -
-        class: PHPStan\Rules\Functions\ArrayFilterRule
-        arguments:
-            treatPhpDocTypesAsCertain: %treatPhpDocTypesAsCertain%
-
-    -
-        class: PHPStan\Rules\Functions\CallUserFuncRule
+    - PHPStan\Rules\Api\ApiStaticCallRule
 

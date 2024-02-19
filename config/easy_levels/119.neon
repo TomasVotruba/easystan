@@ -1,0 +1,13 @@
+includes:
+    - easy_levels/118.neon
+
+parameters:
+    checkMaybeUndefinedVariables: true
+    checkExtraArguments: true
+    reportMagicMethods: true
+    reportMagicProperties: true
+
+conditionalTags: []
+rules:
+    - PHPStan\Rules\Variables\IssetRule
+

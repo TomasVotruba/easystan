@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace TomasVotruba\EasyStan\Neon;
+namespace TomasVotruba\EasyStan\FileSystem;
 
 use Nette\Neon\Neon;
 use Nette\Utils\FileSystem;
