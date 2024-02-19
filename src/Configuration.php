@@ -4,17 +4,18 @@ declare(strict_types=1);
 
 namespace TomasVotruba\EasyStan;
 
+use Webmozart\Assert\Assert;
+
 final class Configuration
 {
-    /**
-     * @param array<string, mixed> $parameters
-     */
-    public function __construct(private array $parameters)
+    public function __construct(private int $easyLevel)
     {
+        // @todo check based on easy configs
+        Assert::range($this->easyLevel, 0, 300);
     }
 
     public function getEasyLevel(): int
     {
-        return $this->parameters['easy_level'];
+        return $this->easyLevel;
     }
 }

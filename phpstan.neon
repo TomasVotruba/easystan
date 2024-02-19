@@ -1,6 +1,7 @@
-parameters:
-    level: 8
+includes:
+    - config/extension.neon
 
+parameters:
     paths:
         - src
         - tests

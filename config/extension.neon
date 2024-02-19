@@ -1,5 +1,7 @@
 parameters:
     easy_level: 10
+    # this allows to run a custom configs without levle
+    customRulesetUsed: true
 
 parametersSchema:
     easy_level: int()
@@ -8,4 +10,4 @@ services:
     -
         factory: TomasVotruba\EasyStan\Configuration
         arguments:
-            - %type_coverage%
+            - %easy_level%
