@@ -1,18 +1,8 @@
 includes:
-    - easy_levels/190.neon
+    - '190.neon'
 
 parameters:
     checkPhpDocMethodSignatures: true
-
-conditionalTags:
-    PHPStan\Rules\Arrays\ArrayUnpackingRule:
-        phpstan.rules.rule: %featureToggles.arrayUnpacking%
-
-    PHPStan\Rules\Properties\ReadOnlyByPhpDocPropertyAssignRefRule:
-        phpstan.rules.rule: %featureToggles.readOnlyByPhpDoc%
-
-    PHPStan\Rules\Properties\ReadOnlyByPhpDocPropertyAssignRule:
-        phpstan.rules.rule: %featureToggles.readOnlyByPhpDoc%
 
 rules:
     - PHPStan\Rules\Variables\ThrowTypeRule

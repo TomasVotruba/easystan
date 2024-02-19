@@ -1,5 +1,5 @@
 includes:
-    - easy_levels/247.neon
+    - '247.neon'
 
 parameters:
     checkFunctionArgumentTypes: true

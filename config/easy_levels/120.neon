@@ -1,5 +1,5 @@
 includes:
-    - easy_levels/119.neon
+    - '119.neon'
 
 parameters:
     checkMaybeUndefinedVariables: true
@@ -7,7 +7,6 @@ parameters:
     reportMagicMethods: true
     reportMagicProperties: true
 
-conditionalTags: []
 rules:
     - PHPStan\Rules\Variables\NullCoalesceRule
 

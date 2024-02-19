@@ -1,8 +1,11 @@
 includes:
-    - easy_levels/202.neon
+    - '202.neon'
 
 parameters:
     checkAdvancedIsset: true
+
+rules:
+    - PHPStan\Rules\Arrays\DeadForeachRule
 
 conditionalTags:
     PHPStan\Rules\Comparison\ConstantLooseComparisonRule:
@@ -19,7 +22,4 @@ conditionalTags:
 
     PHPStan\Rules\Comparison\LogicalXorConstantConditionRule:
         phpstan.rules.rule: %featureToggles.logicalXor%
-
-rules:
-    - PHPStan\Rules\Arrays\DeadForeachRule
 

@@ -1,24 +1,8 @@
 includes:
-    - easy_levels/211.neon
+    - '211.neon'
 
 parameters:
     checkAdvancedIsset: true
-
-conditionalTags:
-    PHPStan\Rules\Comparison\ConstantLooseComparisonRule:
-        phpstan.rules.rule: %featureToggles.looseComparison%
-
-    PHPStan\Rules\Traits\TraitDeclarationCollector:
-        phpstan.collector: %featureToggles.notAnalysedTrait%
-
-    PHPStan\Rules\Traits\TraitUseCollector:
-        phpstan.collector: %featureToggles.notAnalysedTrait%
-
-    PHPStan\Rules\Traits\NotAnalysedTraitRule:
-        phpstan.rules.rule: %featureToggles.notAnalysedTrait%
-
-    PHPStan\Rules\Comparison\LogicalXorConstantConditionRule:
-        phpstan.rules.rule: %featureToggles.logicalXor%
 
 rules:
     - PHPStan\Rules\Methods\NullsafeMethodCallRule

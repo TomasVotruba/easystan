@@ -1,8 +1,11 @@
 includes:
-    - easy_levels/174.neon
+    - '174.neon'
 
 parameters:
     checkPhpDocMethodSignatures: true
+
+rules:
+    - PHPStan\Rules\Arrays\ArrayDestructuringRule
 
 conditionalTags:
     PHPStan\Rules\Arrays\ArrayUnpackingRule:
@@ -13,7 +16,4 @@ conditionalTags:
 
     PHPStan\Rules\Properties\ReadOnlyByPhpDocPropertyAssignRule:
         phpstan.rules.rule: %featureToggles.readOnlyByPhpDoc%
-
-rules:
-    - PHPStan\Rules\Arrays\ArrayDestructuringRule
 

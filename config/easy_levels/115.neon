@@ -1,5 +1,5 @@
 includes:
-    - easy_levels/114.neon
+    - '114.neon'
 
 parameters:
     checkMaybeUndefinedVariables: true
@@ -7,7 +7,7 @@ parameters:
     reportMagicMethods: true
     reportMagicProperties: true
 
-conditionalTags: []
 rules:
     - PHPStan\Rules\Classes\UnusedConstructorParametersRule
 
+conditionalTags: []

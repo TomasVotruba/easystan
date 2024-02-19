@@ -1,9 +1,12 @@
 includes:
-    - easy_levels/243.neon
+    - '243.neon'
 
 parameters:
     checkFunctionArgumentTypes: true
     checkArgumentsPassedByReference: true
+
+rules:
+    - PHPStan\Rules\DateTimeInstantiationRule
 
 conditionalTags:
     PHPStan\Rules\Functions\ArrayFilterRule:
@@ -11,7 +14,4 @@ conditionalTags:
 
     PHPStan\Rules\Functions\CallUserFuncRule:
         phpstan.rules.rule: %featureToggles.callUserFunc%
-
-rules:
-    - PHPStan\Rules\DateTimeInstantiationRule
 

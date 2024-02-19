@@ -1,6 +1,9 @@
 parameters:
     customRulesetUsed: false
 
+rules:
+    - PHPStan\Rules\Api\ApiInstantiationRule
+
 conditionalTags:
     PHPStan\Rules\Api\NodeConnectingVisitorAttributesRule:
         phpstan.rules.rule: %featureToggles.nodeConnectingVisitorRule%
@@ -34,7 +37,4 @@ conditionalTags:
 
     PHPStan\Rules\Constants\MagicConstantContextRule:
         phpstan.rules.rule: %featureToggles.magicConstantOutOfContext%
-
-rules:
-    - PHPStan\Rules\Api\ApiInstantiationRule
 

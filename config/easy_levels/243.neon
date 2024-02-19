@@ -1,5 +1,5 @@
 includes:
-    - easy_levels/242.neon
+    - '242.neon'
 
 parameters:
     checkAdvancedIsset: true

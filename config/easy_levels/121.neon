@@ -1,10 +1,13 @@
 includes:
-    - easy_levels/120.neon
+    - '120.neon'
 
 parameters:
     checkClassCaseSensitivity: true
     checkThisOnly: false
     checkPhpDocMissingReturn: true
+
+rules:
+    - PHPStan\Rules\Cast\EchoRule
 
 conditionalTags:
     PHPStan\Rules\Functions\IncompatibleArrowFunctionDefaultParameterTypeRule:
@@ -24,7 +27,4 @@ conditionalTags:
 
     PHPStan\Rules\Generics\PropertyVarianceRule:
         phpstan.rules.rule: %featureToggles.propertyVariance%
-
-rules:
-    - PHPStan\Rules\Cast\EchoRule
 

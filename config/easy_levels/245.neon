@@ -1,16 +1,9 @@
 includes:
-    - easy_levels/244.neon
+    - '244.neon'
 
 parameters:
     checkFunctionArgumentTypes: true
     checkArgumentsPassedByReference: true
-
-conditionalTags:
-    PHPStan\Rules\Functions\ArrayFilterRule:
-        phpstan.rules.rule: %featureToggles.arrayFilter%
-
-    PHPStan\Rules\Functions\CallUserFuncRule:
-        phpstan.rules.rule: %featureToggles.callUserFunc%
 
 rules:
     - PHPStan\Rules\Functions\ImplodeFunctionRule

@@ -1,5 +1,5 @@
 includes:
-    - easy_levels/252.neon
+    - '252.neon'
 
 parameters:
     checkGenericClassInNonGenericObjectType: true
@@ -7,7 +7,6 @@ parameters:
     checkMissingVarTagTypehint: true
     checkMissingTypehints: true
 
-conditionalTags: []
 rules:
     - PHPStan\Rules\Methods\MissingMethodReturnTypehintRule
 

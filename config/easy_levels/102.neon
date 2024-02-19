@@ -1,5 +1,5 @@
 includes:
-    - easy_levels/101.neon
+    - '101.neon'
 
 parameters:
     customRulesetUsed: false

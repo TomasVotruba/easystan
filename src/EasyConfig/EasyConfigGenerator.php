@@ -28,17 +28,26 @@ final class EasyConfigGenerator
             // make sure it's allowed
             unset($parameters['usedCustomRuleset']);
 
+            $areConditionalTagsIncluded = false;
+
             // @todo split parameters one at a time later
 
             $rules = $phpstanLevelConfig['rules'] ?? [];
 
             // 1 rule at a time
             foreach ($rules as $rule) {
-                $easyLevels[] = [
+                $easyLevel = [
                     'parameters' => $parameters,
-                    'conditionalTags' => $conditionalTags,
                     'rules' => [$rule],
                 ];
+
+                // include just once
+                if ($areConditionalTagsIncluded === false) {
+                    $easyLevel['conditionalTags'] = $conditionalTags;
+                    $areConditionalTagsIncluded = true;
+                }
+
+                $easyLevels[] = $easyLevel;
             }
 
             // one rule service at at time
@@ -62,7 +71,7 @@ final class EasyConfigGenerator
             // make sure to include previous configs
             if ($key > 0) {
                 $easyLevel = array_merge([
-                    'includes' => ['easy_levels/' . ($key - 1) . '.neon'],
+                    'includes' => [($key - 1) . '.neon'],
                 ], $easyLevel);
             }
 

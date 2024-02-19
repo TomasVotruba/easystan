@@ -1,5 +1,5 @@
 includes:
-    - easy_levels/170.neon
+    - '170.neon'
 
 parameters:
     checkClassCaseSensitivity: true

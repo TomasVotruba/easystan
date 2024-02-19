@@ -1,5 +1,5 @@
 includes:
-    - easy_levels/116.neon
+    - '116.neon'
 
 parameters:
     checkMaybeUndefinedVariables: true
@@ -7,7 +7,6 @@ parameters:
     reportMagicMethods: true
     reportMagicProperties: true
 
-conditionalTags: []
 rules:
     - PHPStan\Rules\Functions\UnusedClosureUsesRule
 

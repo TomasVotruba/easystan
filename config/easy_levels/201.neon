@@ -1,5 +1,5 @@
 includes:
-    - easy_levels/200.neon
+    - '200.neon'
 
 parameters:
     checkPhpDocMethodSignatures: true
