@@ -1,17 +1,18 @@
 parameters:
     easy_level: 10
-    # this allows to run a custom configs without levle
     customRulesetUsed: true
-
     bootstrapFiles:
         - ../src/bootstrap_file.php
 
 parametersSchema:
     easy_level: int()
 
-
 services:
     -
         factory: TomasVotruba\EasyStan\Configuration
         arguments:
             - %easy_level%
+
+includes:
+    # to be filled on the fly
+
