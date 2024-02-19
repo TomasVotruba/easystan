@@ -1,0 +1,11 @@
+parameters:
+    easy_level: 10
+
+parametersSchema:
+    easy_level: int()
+
+services:
+    -
+        factory: TomasVotruba\EasyStan\Configuration
+        arguments:
+            - %type_coverage%
