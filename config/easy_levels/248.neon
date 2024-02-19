@@ -5,3 +5,7 @@ services:
     -
         class: PHPStan\Rules\Functions\CallUserFuncRule
 
+conditionalTags:
+    PHPStan\Rules\Functions\CallUserFuncRule:
+        phpstan.rules.rule: %featureToggles.callUserFunc%
+

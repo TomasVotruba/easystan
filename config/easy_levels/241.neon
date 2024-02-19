@@ -5,3 +5,7 @@ services:
     -
         class: PHPStan\Rules\Traits\TraitUseCollector
 
+conditionalTags:
+    PHPStan\Rules\Traits\TraitUseCollector:
+        phpstan.collector: %featureToggles.notAnalysedTrait%
+

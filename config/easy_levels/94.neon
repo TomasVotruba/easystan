@@ -5,3 +5,7 @@ services:
     -
         class: PHPStan\Rules\Methods\ConsistentConstructorRule
 
+conditionalTags:
+    PHPStan\Rules\Methods\ConsistentConstructorRule:
+        phpstan.rules.rule: %featureToggles.consistentConstructor%
+

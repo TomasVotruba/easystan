@@ -7,3 +7,7 @@ services:
         arguments:
             treatPhpDocTypesAsCertain: %treatPhpDocTypesAsCertain%
 
+conditionalTags:
+    PHPStan\Rules\Functions\ArrayFilterRule:
+        phpstan.rules.rule: %featureToggles.arrayFilter%
+

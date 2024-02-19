@@ -9,3 +9,7 @@ services:
             treatPhpDocTypesAsCertain: %treatPhpDocTypesAsCertain%
             reportAlwaysTrueInLastCondition: %reportAlwaysTrueInLastCondition%
 
+conditionalTags:
+    PHPStan\Rules\Comparison\ConstantLooseComparisonRule:
+        phpstan.rules.rule: %featureToggles.looseComparison%
+

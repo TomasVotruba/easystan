@@ -5,3 +5,7 @@ services:
     -
         class: PHPStan\Rules\Constants\MagicConstantContextRule
 
+conditionalTags:
+    PHPStan\Rules\Constants\MagicConstantContextRule:
+        phpstan.rules.rule: %featureToggles.magicConstantOutOfContext%
+

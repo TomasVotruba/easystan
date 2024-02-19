@@ -13,7 +13,7 @@ final class EasyLevelExtensionUpdater
     /**
      * @var string
      */
-    private const EXTENSION_FILE_PATH = __DIR__ . '/../config/extension.neon';
+    private const EXTENSION_FILE_PATH = __DIR__ . '/../../config/extension.neon';
 
     /**
      * @var string

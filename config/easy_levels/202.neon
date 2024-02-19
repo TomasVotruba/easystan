@@ -5,3 +5,7 @@ services:
     -
         class: PHPStan\Rules\Properties\ReadOnlyByPhpDocPropertyAssignRule
 
+conditionalTags:
+    PHPStan\Rules\Properties\ReadOnlyByPhpDocPropertyAssignRule:
+        phpstan.rules.rule: %featureToggles.readOnlyByPhpDoc%
+

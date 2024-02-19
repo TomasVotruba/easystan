@@ -5,3 +5,7 @@ services:
     -
         class: PHPStan\Rules\Methods\IllegalConstructorMethodCallRule
 
+conditionalTags:
+    PHPStan\Rules\Methods\IllegalConstructorMethodCallRule:
+        phpstan.rules.rule: %featureToggles.illegalConstructorMethodCall%
+

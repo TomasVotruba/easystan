@@ -5,3 +5,7 @@ services:
     -
         class: PHPStan\Rules\Functions\IncompatibleArrowFunctionDefaultParameterTypeRule
 
+conditionalTags:
+    PHPStan\Rules\Functions\IncompatibleArrowFunctionDefaultParameterTypeRule:
+        phpstan.rules.rule: %featureToggles.closureDefaultParameterTypeRule%
+

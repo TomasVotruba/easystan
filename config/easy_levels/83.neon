@@ -5,3 +5,7 @@ services:
     -
         class: PHPStan\Rules\Api\ApiInstanceofRule
 
+conditionalTags:
+    PHPStan\Rules\Api\ApiInstanceofRule:
+        phpstan.rules.rule: %featureToggles.runtimeReflectionRules%
+

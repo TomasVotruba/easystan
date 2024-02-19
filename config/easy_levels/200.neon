@@ -5,3 +5,7 @@ services:
     -
         class: PHPStan\Rules\Arrays\ArrayUnpackingRule
 
+conditionalTags:
+    PHPStan\Rules\Arrays\ArrayUnpackingRule:
+        phpstan.rules.rule: %featureToggles.arrayUnpacking%
+

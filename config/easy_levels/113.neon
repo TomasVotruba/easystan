@@ -5,3 +5,7 @@ services:
     -
         class: PHPStan\Rules\Methods\MissingMagicSerializationMethodsRule
 
+conditionalTags:
+    PHPStan\Rules\Methods\MissingMagicSerializationMethodsRule:
+        phpstan.rules.rule: %featureToggles.missingMagicSerializationRule%
+

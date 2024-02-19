@@ -8,3 +8,7 @@ services:
             treatPhpDocTypesAsCertain: %treatPhpDocTypesAsCertain%
             reportAlwaysTrueInLastCondition: %reportAlwaysTrueInLastCondition%
 
+conditionalTags:
+    PHPStan\Rules\Comparison\LogicalXorConstantConditionRule:
+        phpstan.rules.rule: %featureToggles.logicalXor%
+

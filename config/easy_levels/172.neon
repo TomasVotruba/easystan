@@ -5,3 +5,7 @@ services:
     -
         class: PHPStan\Rules\PhpDoc\VarTagChangedExpressionTypeRule
 
+conditionalTags:
+    PHPStan\Rules\PhpDoc\VarTagChangedExpressionTypeRule:
+        phpstan.rules.rule: %featureToggles.varTagType%
+

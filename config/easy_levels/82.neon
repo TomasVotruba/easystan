@@ -5,3 +5,7 @@ services:
     -
         class: PHPStan\Rules\Api\ApiClassConstFetchRule
 
+conditionalTags:
+    PHPStan\Rules\Api\ApiClassConstFetchRule:
+        phpstan.rules.rule: %featureToggles.runtimeReflectionRules%
+

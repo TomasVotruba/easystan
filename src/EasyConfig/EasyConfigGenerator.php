@@ -15,6 +15,11 @@ final class EasyConfigGenerator
      */
     private const CUSTOM_RULESET_KEY = 'customRulesetUsed';
 
+    /**
+     * @var string
+     */
+    private const CONDITIONAL_TAGS_KEY = 'conditionalTags';
+
     private PHPStanLevelConfigsLoader $phpStanLevelConfigsLoader;
 
     public function __construct()
@@ -29,14 +34,12 @@ final class EasyConfigGenerator
         // we need to regenerate
         foreach ($this->phpStanLevelConfigsLoader->loadByLevel() as $phpstanLevelConfig) {
             $parameters = $phpstanLevelConfig['parameters'] ?? [];
-            $conditionalTags = $phpstanLevelConfig['conditionalTags'] ?? [];
+
+            $conditionalTags = $phpstanLevelConfig[self::CONDITIONAL_TAGS_KEY] ?? [];
             // make sure it's allowed
             unset($parameters[self::CUSTOM_RULESET_KEY]);
 
-            $areConditionalTagsIncluded = false;
-
             // @todo split parameters one at a time later
-
             $rules = $phpstanLevelConfig['rules'] ?? [];
 
             // 1 rule at a time
@@ -49,10 +52,9 @@ final class EasyConfigGenerator
                     $easyLevel['parameters'] = $parameters;
                 }
 
-                // include just once
-                if ($areConditionalTagsIncluded === false) {
-                    $easyLevel['conditionalTags'] = $conditionalTags;
-                    $areConditionalTagsIncluded = true;
+                // add conditional tags for the rule
+                if (isset($conditionalTags[$rule])) {
+                    $easyLevel['conditionalTags'][$rule] = $conditionalTags[$rule];
                 }
 
                 $easyLevels[] = $easyLevel;
@@ -63,9 +65,16 @@ final class EasyConfigGenerator
             $services = $phpstanLevelConfig['services'] ?? [];
 
             foreach ($services as $service) {
-                $easyLevels[] = [
+                $easyLevel = [
                     'services' => [$service],
                 ];
+
+                $serviceClass = $service['class'] ?? null;
+                if ($serviceClass && isset($conditionalTags[$serviceClass])) {
+                    $easyLevel['conditionalTags'][$serviceClass] = $conditionalTags[$serviceClass];
+                }
+
+                $easyLevels[] = $easyLevel;
             }
         }
 

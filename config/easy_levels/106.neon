@@ -5,3 +5,7 @@ services:
     -
         class: PHPStan\Rules\Properties\UninitializedPropertyRule
 
+conditionalTags:
+    PHPStan\Rules\Properties\UninitializedPropertyRule:
+        phpstan.rules.rule: %checkUninitializedProperties%
+

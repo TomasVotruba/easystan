@@ -5,3 +5,7 @@ services:
     -
         class: PHPStan\Rules\Functions\IncompatibleClosureDefaultParameterTypeRule
 
+conditionalTags:
+    PHPStan\Rules\Functions\IncompatibleClosureDefaultParameterTypeRule:
+        phpstan.rules.rule: %featureToggles.closureDefaultParameterTypeRule%
+

@@ -5,3 +5,7 @@ services:
     -
         class: PHPStan\Rules\Api\NodeConnectingVisitorAttributesRule
 
+conditionalTags:
+    PHPStan\Rules\Api\NodeConnectingVisitorAttributesRule:
+        phpstan.rules.rule: %featureToggles.nodeConnectingVisitorRule%
+

@@ -7,3 +7,7 @@ services:
         arguments:
             readOnlyByPhpDoc: %featureToggles.readOnlyByPhpDoc%
 
+conditionalTags:
+    PHPStan\Rules\Generics\PropertyVarianceRule:
+        phpstan.rules.rule: %featureToggles.propertyVariance%
+
