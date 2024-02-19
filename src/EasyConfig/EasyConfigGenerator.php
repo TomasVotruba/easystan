@@ -57,7 +57,6 @@ final class EasyConfigGenerator
             foreach ($services as $service) {
                 $easyLevels[] = [
                     'parameters' => $parameters,
-                    'conditionalTags' => $conditionalTags,
                     'services' => [$service],
                 ];
             }
