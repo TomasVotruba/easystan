@@ -28,6 +28,20 @@ jobs:
                         name: 'Tests'
                         run: vendor/bin/phpunit
 
+                    -
+                        name: "Run easy levels"
+                        run:
+                            # first run updates internal config to import early
+                            vendor/bin/phpstan analyse --configuration phpstan-easylevel-50.neon
+                            # second run applies the rules
+                            vendor/bin/phpstan analyse --configuration phpstan-easylevel-50.neon
+
+                            # same as above, testing level change
+                            vendor/bin/phpstan analyse --configuration phpstan-easylevel-100.neon
+                            vendor/bin/phpstan analyse --configuration phpstan-easylevel-100.neon
+
+
+
         name: ${{ matrix.actions.name }}
         runs-on: ubuntu-latest
 

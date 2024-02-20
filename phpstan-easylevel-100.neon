@@ -1,0 +1,9 @@
+includes:
+    - config/extension.neon
+
+parameters:
+    easy_level: 100
+
+    paths:
+        - src
+        - tests
