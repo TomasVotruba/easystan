@@ -85,6 +85,10 @@ final class EasyConfigGenerator
             // print levels
             NeonFileSystem::print($easyLevel, $targetEasyLevelConfigFilePath);
 
+            if (defined('PHPUNIT_COMPOSER_INSTALL')) {
+                continue;
+            }
+
             echo 'Generated config ' . PathHelper::relativeToCwd($targetEasyLevelConfigFilePath) . PHP_EOL;
         }
     }
