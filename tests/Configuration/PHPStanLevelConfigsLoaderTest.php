@@ -14,5 +14,4 @@ final class PHPStanLevelConfigsLoaderTest extends TestCase
     public function test(): void
     {
     }
-
 }
