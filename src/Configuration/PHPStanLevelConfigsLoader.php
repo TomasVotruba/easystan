@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace TomasVotruba\EasyStan\Configuration;
 
 use Nette\Neon\Neon;
-use TomasVotruba\EasyStan\FileSystem\NeonFilesFinder;
+use TomasVotruba\EasyStan\FileSystem\NeonFileSystem;
 
 /**
  * This service loads PHPStan level configs
@@ -18,7 +18,7 @@ final class PHPStanLevelConfigsLoader
     public function loadByLevel(): array
     {
         // to be found in https://github.com/phpstan/phpstan-src/tree/1.11.x/conf
-        $phpstanConfigFiles = NeonFilesFinder::find(['phar://vendor/phpstan/phpstan/phpstan.phar/conf']);
+        $phpstanConfigFiles = NeonFileSystem::find(['phar://vendor/phpstan/phpstan/phpstan.phar/conf']);
 
         $configContentsByLevel = [];
 

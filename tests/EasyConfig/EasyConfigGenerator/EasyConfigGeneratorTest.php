@@ -21,6 +21,11 @@ final class EasyConfigGeneratorTest extends TestCase
         $this->easyConfigGenerator = new EasyConfigGenerator();
     }
 
+    protected function tearDown(): void
+    {
+        FileSystem::delete(__DIR__ . '/output');
+    }
+
     public function test(): void
     {
         $this->easyConfigGenerator->generate(__DIR__ . '/output');
@@ -33,10 +38,5 @@ final class EasyConfigGeneratorTest extends TestCase
             ->count();
 
         $this->assertGreaterThan(250, $generatedFileCount);
-    }
-
-    protected function tearDown(): void
-    {
-        FileSystem::delete(__DIR__ . '/output');
     }
 }

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace TomasVotruba\EasyStan;
 
+use Symfony\Component\Finder\Finder;
 use Webmozart\Assert\Assert;
 
 final class Configuration
@@ -11,8 +12,13 @@ final class Configuration
     public function __construct(
         private int $easyLevel
     ) {
-        // @todo check based on config/easy_level/* file count
-        Assert::range($this->easyLevel, 0, 300);
+        // count files in directory
+        $maxLevelCount = Finder::create()
+            ->files()
+            ->in(__DIR__ . '/../config/easy_levels')
+            ->count();
+
+        Assert::range($this->easyLevel, 0, $maxLevelCount);
     }
 
     public function getEasyLevel(): int
