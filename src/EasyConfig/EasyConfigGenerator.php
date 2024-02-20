@@ -5,21 +5,15 @@ declare(strict_types=1);
 namespace TomasVotruba\EasyStan\EasyConfig;
 
 use TomasVotruba\EasyStan\Configuration\PHPStanLevelConfigsLoader;
+use TomasVotruba\EasyStan\Enum\PHPStanConfigKey;
 use TomasVotruba\EasyStan\FileSystem\NeonFileSystem;
 use TomasVotruba\EasyStan\FileSystem\PathHelper;
 
+/**
+ * @see \TomasVotruba\EasyStan\Tests\EasyConfig\EasyConfigGenerator\EasyConfigGeneratorTest
+ */
 final class EasyConfigGenerator
 {
-    /**
-     * @var string
-     */
-    private const CUSTOM_RULESET_KEY = 'customRulesetUsed';
-
-    /**
-     * @var string
-     */
-    private const CONDITIONAL_TAGS_KEY = 'conditionalTags';
-
     private PHPStanLevelConfigsLoader $phpStanLevelConfigsLoader;
 
     public function __construct()
@@ -27,34 +21,34 @@ final class EasyConfigGenerator
         $this->phpStanLevelConfigsLoader = new PHPStanLevelConfigsLoader();
     }
 
-    public function generate(): void
+    public function generate(string $targetConfigDirectory): void
     {
         $easyLevels = [];
 
         // we need to regenerate
         foreach ($this->phpStanLevelConfigsLoader->loadByLevel() as $phpstanLevelConfig) {
-            $parameters = $phpstanLevelConfig['parameters'] ?? [];
+            $parameters = $phpstanLevelConfig[PHPStanConfigKey::PARAMETERS_KEY] ?? [];
 
-            $conditionalTags = $phpstanLevelConfig[self::CONDITIONAL_TAGS_KEY] ?? [];
+            $conditionalTags = $phpstanLevelConfig[PHPStanConfigKey::CONDITIONAL_TAGS_KEY] ?? [];
             // make sure it's allowed
-            unset($parameters[self::CUSTOM_RULESET_KEY]);
+            unset($parameters[PHPStanConfigKey::CUSTOM_RULESET_KEY]);
 
             // @todo split parameters one at a time later
-            $rules = $phpstanLevelConfig['rules'] ?? [];
+            $rules = $phpstanLevelConfig[PHPStanConfigKey::RULES] ?? [];
 
             // 1 rule at a time
             foreach ($rules as $rule) {
                 $easyLevel = [
-                    'rules' => [$rule],
+                    PHPStanConfigKey::RULES => [$rule],
                 ];
 
                 if ($parameters !== []) {
-                    $easyLevel['parameters'] = $parameters;
+                    $easyLevel[PHPStanConfigKey::PARAMETERS_KEY] = $parameters;
                 }
 
                 // add conditional tags for the rule
                 if (isset($conditionalTags[$rule])) {
-                    $easyLevel['conditionalTags'][$rule] = $conditionalTags[$rule];
+                    $easyLevel[PHPStanConfigKey::CONDITIONAL_TAGS_KEY][$rule] = $conditionalTags[$rule];
                 }
 
                 $easyLevels[] = $easyLevel;
@@ -62,16 +56,16 @@ final class EasyConfigGenerator
 
             // one rule service at at time
             // @todo make sure to share non-rule services in every config
-            $services = $phpstanLevelConfig['services'] ?? [];
+            $services = $phpstanLevelConfig[PHPStanConfigKey::SERVICES] ?? [];
 
             foreach ($services as $service) {
                 $easyLevel = [
-                    'services' => [$service],
+                    PHPStanConfigKey::SERVICES => [$service],
                 ];
 
                 $serviceClass = $service['class'] ?? null;
                 if ($serviceClass && isset($conditionalTags[$serviceClass])) {
-                    $easyLevel['conditionalTags'][$serviceClass] = $conditionalTags[$serviceClass];
+                    $easyLevel[PHPStanConfigKey::CONDITIONAL_TAGS_KEY][$serviceClass] = $conditionalTags[$serviceClass];
                 }
 
                 $easyLevels[] = $easyLevel;
@@ -79,9 +73,7 @@ final class EasyConfigGenerator
         }
 
         foreach ($easyLevels as $key => $easyLevel) {
-            $targetEasyLevelConfigFilePath = __DIR__ . '/../../config/easy_levels/' . $key . '.neon';
-
-            echo 'Generated config ' . PathHelper::relativeToCwd($targetEasyLevelConfigFilePath) . PHP_EOL;
+            $targetEasyLevelConfigFilePath = $targetConfigDirectory . '/' . $key . '.neon';
 
             // make sure to include previous configs
             if ($key > 0) {
@@ -92,6 +84,8 @@ final class EasyConfigGenerator
 
             // print levels
             NeonFileSystem::print($easyLevel, $targetEasyLevelConfigFilePath);
+
+            echo 'Generated config ' . PathHelper::relativeToCwd($targetEasyLevelConfigFilePath) . PHP_EOL;
         }
     }
 }
