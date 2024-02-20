@@ -9,6 +9,8 @@ use TomasVotruba\EasyStan\FileSystem\NeonFileSystem;
 
 /**
  * This service loads PHPStan level configs
+ *
+ * @see \TomasVotruba\EasyStan\Tests\Configuration\PHPStanLevelConfigsLoaderTest
  */
 final class PHPStanLevelConfigsLoader
 {
